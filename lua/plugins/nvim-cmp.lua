@@ -46,6 +46,13 @@ return {
 					{ name = "luasnip", max_item_count = 3 }, -- snippets
 				}),
 			})
+
+			-- Set up lspconfig.
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+			require("lspconfig")["intelephense"].setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 }
