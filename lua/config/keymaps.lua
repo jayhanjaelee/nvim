@@ -15,3 +15,6 @@ mapKey('<leader>h', ':nohlsearch<CR>')
 -- indent
 mapKey('<', '<gv', 'v')
 mapKey('>', '>gv', 'v')
+
+-- zoom
+mapKey('<C-w>z', '<C-w>_<C-w>|');
