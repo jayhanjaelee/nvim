@@ -7,12 +7,13 @@ return {
   config = function()
     local keymap = vim.keymap.set
     require('lspsaga').setup({
+      enable = false,
       text_hl_follow = false,
       show_layout = 'normal',
 
       -- key mapping
-      keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics ++normal<CR>"),
-      keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics ++normal<CR>"),
+      keymap("n", "<leader>m", "<cmd>Lspsaga show_buf_diagnostics ++normal<CR>"),
+      -- keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics ++normal<CR>"),
       -- Diagnostic jump,
       -- You can use <C-o> to jump back to your previous location,
       keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>"),
@@ -23,4 +24,3 @@ return {
     })
   end,
 }
-
