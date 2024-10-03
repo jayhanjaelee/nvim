@@ -18,6 +18,11 @@ return {
       sort_case_insensitive = false, -- used when sorting files and directories in the tree
       sort_function = nil , -- use a custom function for sorting files and directories in
       filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = false
+        },
         follow_current_file = {
           enabled = true,
           leave_dirs_open = false,
