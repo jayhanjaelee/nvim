@@ -16,7 +16,7 @@ return {
         type = "executable",
         command = "node",
         -- change this to where you build vscode-php-debug
-        args = { os.getenv("HOME") or os.getenv("USERPROFILE") .. "/vscode-php-debug/out/phpDebug.js" },
+        args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
       }
 
       dap.configurations.php = {
@@ -27,15 +27,15 @@ return {
           port = 9003,
         },
         -- to run php right from the editor
-        {
-          name = "run current script",
-          type = "php",
-          request = "launch",
-          port = 9003,
-          cwd = "${fileDirname}",
-          program = "${file}",
-          runtimeExecutable = "php",
-        },
+        -- {
+        --   name = "run current script",
+        --   type = "php",
+        --   request = "launch",
+        --   port = 9003,
+        --   cwd = "${fileDirname}",
+        --   program = "${file}",
+        --   runtimeExecutable = "php",
+        -- },
       }
 
       require("dapui").setup()
