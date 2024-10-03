@@ -16,6 +16,8 @@ return {
 				"query",
 				"javascript",
 				"html",
+        "asm",
+        "disassembly",
 			},
 			sync_install = false,
 			highlight = { enable = true },

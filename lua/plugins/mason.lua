@@ -13,10 +13,11 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",
-					"ts_ls",
-					"clangd",
-					"intelephense",
+					"lua_ls", -- php
+					"clangd", -- c
+          "asm_lsp", -- assembly
+					"ts_ls", -- javascript & typescript
+					"intelephense", -- php
 				},
 			})
 		end,
@@ -25,14 +26,28 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
+      -- lua
 			lspconfig.lua_ls.setup({})
+      -- js & ts
 			lspconfig.ts_ls.setup({})
+      -- c
 			lspconfig.clangd.setup({})
+      -- php
 			lspconfig.intelephense.setup({
 				cmd = { "intelephense", "--stdio" },
 				filetypes = "php",
 				root_dir = lspconfig.util.root_pattern("composer.json", ".git", ".svn"),
 			})
+      -- assembly
+      lspconfig.asm_lsp.setup{
+        cmd = {"asm-lsp"},
+        filetypes = {"asm","vmasm","s"},
+        opts = {
+          -- compiler = "gcc"
+          diagnostics = false,
+          default_diagnostics = false
+        }
+      }
 
 			keyMapper("K", vim.lsp.buf.hover)
 			keyMapper("gd", vim.lsp.buf.definition)
