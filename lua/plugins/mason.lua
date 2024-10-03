@@ -7,6 +7,7 @@ return {
 			require("mason").setup()
 		end,
 	},
+  -- LSP
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
@@ -37,5 +38,26 @@ return {
 			keyMapper("gd", vim.lsp.buf.definition)
 			keyMapper("<leader>ca", vim.lsp.buf.code_action)
 		end,
+	},
+
+  -- Formatter
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"nvimtools/none-ls.nvim",
+		},
+    config = function() 
+      require("mason-null-ls").setup({
+        ensure_installed = {
+          'stylua',
+          'black',
+          'php-cs-fixer'
+        },
+        automatic_installation = false,
+        handlers = {},
+      })
+    end,
 	},
 }

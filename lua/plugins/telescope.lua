@@ -9,6 +9,12 @@ return {
       mapKey('<leader>fg', builtin.live_grep)
       mapKey('<leader>fb', builtin.buffers)
       mapKey('<leader>fh', builtin.help_tags)
+
+      -- change border
+      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = "#5c6370" })
+      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = "#5c6370" })
+      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = "#5c6370" })
+      vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = "#5c6370" })
     end,
   },
   {
