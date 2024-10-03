@@ -27,7 +27,15 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
       -- lua
-			lspconfig.lua_ls.setup({})
+			lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = {'vim'}
+            }
+          }
+        }
+      })
       -- js & ts
 			lspconfig.ts_ls.setup({})
       -- c
