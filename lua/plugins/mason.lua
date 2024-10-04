@@ -1,4 +1,8 @@
 local keyMapper = require("utils.keyMapper").mapKey
+local custom_lsp_attach = function(client)
+  vim.api.nvim_set_current_dir(client.config.root_dir)
+  -- other stuff...
+end
 
 return {
 	{
@@ -45,7 +49,8 @@ return {
 			lspconfig.intelephense.setup({
 				cmd = { "intelephense", "--stdio" },
 				filetypes = "php",
-				root_dir = lspconfig.util.root_pattern("composer.json", ".git", ".svn"),
+        -- root_dir = lspconfig.util.root_pattern("composer.json", ".git", ".svn"),
+				-- root_dir = custom_lsp_attach,
 			})
       -- assembly
       lspconfig.asm_lsp.setup{
