@@ -7,7 +7,9 @@ return {
   config = function()
     local keymap = vim.keymap.set
     require('lspsaga').setup({
-      code_action_prompt = { enable = false },
+      lightbulb = {
+        enable = false
+      },
       text_hl_follow = false,
       show_layout = 'normal',
 
