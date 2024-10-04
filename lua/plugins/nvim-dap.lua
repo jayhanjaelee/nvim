@@ -11,12 +11,13 @@ return {
       local dap = require("dap")
       local ui = require("dapui")
 
+      local phpDapSrc = os.getenv("USERPROFILE") .. "/vscode-php-debug/out/phpDebug.js"
       -- php
       dap.adapters.php = {
         type = "executable",
         command = "node",
         -- change this to where you build vscode-php-debug
-        args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
+        args = { phpDapSrc },
       }
 
       dap.configurations.php = {
