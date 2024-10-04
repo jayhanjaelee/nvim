@@ -16,5 +16,9 @@ mapKey('<leader>h', ':nohlsearch<CR>')
 mapKey('<', '<gv', 'v')
 mapKey('>', '>gv', 'v')
 
+-- buffer
+mapKey('<leader>p', ':bp<cr>')
+mapKey('<leader>n', ':bn<cr>')
+
 -- zoom
 mapKey('<C-w>z', '<C-w>_<C-w>|');

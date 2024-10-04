@@ -18,6 +18,7 @@ return {
           "asm_lsp", -- assembly
 					"ts_ls", -- javascript & typescript
 					"intelephense", -- php
+          "pylsp", -- python
 				},
 			})
 		end,
@@ -56,6 +57,8 @@ return {
           default_diagnostics = false
         }
       }
+      -- python
+      lspconfig.pylsp.setup{}
 
 			keyMapper("K", vim.lsp.buf.hover)
 			keyMapper("gd", vim.lsp.buf.definition)
