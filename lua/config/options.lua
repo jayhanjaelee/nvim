@@ -20,6 +20,9 @@ opt.relativenumber = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 
+-- file system
+opt.path:append('**')
+
 -- etc
 opt.encoding = "UTF-8"
 opt.cmdheight = 1

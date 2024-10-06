@@ -17,8 +17,11 @@ mapKey('<', '<gv', 'v')
 mapKey('>', '>gv', 'v')
 
 -- buffer
-mapKey('<leader>p', ':bp<cr>')
-mapKey('<leader>n', ':bn<cr>')
+mapKey('<Tab>', ':bp<cr>')
+mapKey('<S-Tab>', ':bn<cr>')
+mapKey('<leader>dd', ':bd<cr>')
+mapKey('<leader>da', ':%bd|e#|bd#<cr>') -- delete other buffers
+mapKey('<leader>l', ':ls<cr>') -- delete other buffers
 
 -- zoom
 mapKey('<C-w>z', '<C-w>_<C-w>|');
