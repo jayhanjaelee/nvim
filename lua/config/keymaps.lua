@@ -25,3 +25,6 @@ mapKey('<leader>l', ':ls<cr>') -- delete other buffers
 
 -- zoom
 mapKey('<C-w>z', '<C-w>_<C-w>|');
+
+-- file
+mapKey('<C-g>', '1<C-g>')
