@@ -9,6 +9,12 @@ mapKey('<C-j>', '<C-w>j') -- Down
 mapKey('<C-k>', '<C-w>k') -- Up
 mapKey('<C-l>', '<C-w>l') -- Right
 
+-- pane resize
+mapKey("<M-h>", ":vertical resize -2<cr>")
+mapKey("<M-l>", ":vertical resize +2<cr>")
+mapKey("<M-j>", ":horizontal resize -2<cr>")
+mapKey("<M-k>", ":horizontal resize +2<cr>")
+
 -- clear search hl
 mapKey('<leader>h', ':nohlsearch<CR>')
 
