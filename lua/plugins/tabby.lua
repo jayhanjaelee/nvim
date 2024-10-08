@@ -13,7 +13,9 @@ return {
       win = 'TabLine',
       tail = 'TabLine',
     }
+    -- local mapKey = require('utils.keyMapper').mapKey
     require('tabby').setup({
+      -- mapKey('<leader>s', ':Tabby pick_window<cr>'),
       line = function(line)
         return {
           {
