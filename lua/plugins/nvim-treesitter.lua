@@ -16,6 +16,7 @@ return {
 				"query",
 				"javascript",
 				"html",
+        "css",
         "asm",
         "disassembly",
 			},
