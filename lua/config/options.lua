@@ -31,3 +31,6 @@ opt.scrolloff = 10
 
 -- text
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
+
+-- indent for file type
+vim.cmd([[autocmd FileType php setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab]])
