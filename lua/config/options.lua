@@ -29,6 +29,9 @@ opt.cmdheight = 1
 opt.scrolloff = 10
 -- opt.mouse:append("a")
 
+opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+
+
 -- text
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
 
