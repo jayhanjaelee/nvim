@@ -29,11 +29,5 @@ opt.cmdheight = 1
 opt.scrolloff = 10
 -- opt.mouse:append("a")
 
+-- tabby
 opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
-
-
--- text
-vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
-
--- indent for file type
-vim.cmd([[autocmd FileType php setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab]])

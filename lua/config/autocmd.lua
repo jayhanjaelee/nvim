@@ -8,3 +8,14 @@ vim.api.nvim_create_autocmd({'BufWinEnter'}, {
   pattern = '*',
   command = 'silent! normal! g`"zv',
 })
+
+-- text format
+vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=c]])
+vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=r]])
+vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=o]])
+
+-- split window
+vim.cmd([[autocmd WinNew * wincmd L]])
+
+-- indent for file type
+vim.cmd([[autocmd FileType php setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab]])

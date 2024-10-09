@@ -11,10 +11,16 @@ return {
       local dap = require("dap")
       local ui = require("dapui")
 
+      local phpDapSrc = nil;
+      local osname = vim.loop.os_uname().sysname
+      if osname == 'Darwin' then
+        -- unix
+        phpDapSrc = os.getenv("PATH") .. "/vscode-php-debug/out/phpDebug.js"
+      elseif string.find(osname, "Windows") then
       -- windows
-      -- local phpDapSrc = os.getenv("USERPROFILE") .. "/vscode-php-debug/out/phpDebug.js"
-      -- unix
-      local phpDapSrc = os.getenv("PATH") .. "/vscode-php-debug/out/phpDebug.js"
+        phpDapSrc = os.getenv("USERPROFILE") .. "/vscode-php-debug/out/phpDebug.js"
+      end
+
       -- php
       dap.adapters.php = {
         type = "executable",

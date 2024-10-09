@@ -44,7 +44,9 @@ return {
       -- js & ts
 			lspconfig.ts_ls.setup({})
       -- c
-			lspconfig.clangd.setup({})
+			lspconfig.clangd.setup({
+        -- cmd = { "--function-arg-placeholders" }
+      })
       -- php
 			lspconfig.intelephense.setup({
 				cmd = { "intelephense", "--stdio" },
