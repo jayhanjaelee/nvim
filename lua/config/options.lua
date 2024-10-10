@@ -22,6 +22,7 @@ opt.signcolumn = "yes"
 
 -- file system
 opt.path:append('**')
+opt.autochdir = true
 
 -- etc
 opt.encoding = "UTF-8"
