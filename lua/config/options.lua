@@ -5,7 +5,9 @@ opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.expandtab = true
+opt.autoindent = true
 opt.smartindent = true
+opt.indentexpr = ""
 opt.wrap = false
 
 -- search
@@ -22,7 +24,7 @@ opt.signcolumn = "yes"
 
 -- file system
 opt.path:append('**')
-opt.autochdir = true
+-- opt.autochdir = true
 
 -- etc
 opt.encoding = "UTF-8"
