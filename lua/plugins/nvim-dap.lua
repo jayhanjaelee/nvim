@@ -15,11 +15,15 @@ return {
       local osname = vim.loop.os_uname().sysname
       if osname == 'Darwin' then
         -- unix
-        phpDapSrc = os.getenv("PATH") .. "/vscode-php-debug/out/phpDebug.js"
+        phpDapSrc = os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js"
       elseif string.find(osname, "Windows") then
       -- windows
         phpDapSrc = os.getenv("USERPROFILE") .. "/vscode-php-debug/out/phpDebug.js"
       end
+
+      -- change symbol color for breakpoint
+      vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#e86671', bg = '#282c34' })
+      vim.fn.sign_define('DapBreakpoint', {text='B', texthl='DapBreakpoint', linehl='', numhl=''})
 
       -- php
       dap.adapters.php = {
@@ -60,13 +64,6 @@ return {
         only_first_definition = true,          -- only show virtual text at first definition (if there are multiple)
         all_references = false,                -- show virtual text on all all references of the variable (not only definitions)
         clear_on_continue = false,             -- clear virtual text on "continue" (might cause flickering when stepping)
-        --- A callback that determines how a variable is displayed or whether it should be omitted
-        --- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
-        --- @param buf number
-        --- @param stackframe dap.StackFrame https://microsoft.github.io/debug-adapter-protocol/specification#Types_StackFrame
-        --- @param node userdata tree-sitter node identified as variable definition of reference (see `:h tsnode`)
-        --- @param options nvim_dap_virtual_text_options Current options for nvim-dap-virtual-text
-        --- @return string|nil A text how the virtual text should be displayed or nil, if this variable shouldn't be displayed
         display_callback = function(variable, buf, stackframe, node, options)
           -- by default, strip out new line characters
           if options.virt_text_pos == 'inline' then
