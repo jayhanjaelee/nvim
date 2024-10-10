@@ -52,7 +52,35 @@ return {
         -- },
       }
 
-      require("dapui").setup()
+      require("dapui").setup({
+        layouts = { {
+          elements = { {
+            id = "breakpoint",
+            size = 0.25
+          }, {
+              id = "stacks",
+              size = 0.25
+            }, {
+              id = "watches",
+              size = 0.25
+            }, {
+              id = "scopes",
+              size = 0.25
+            } },
+          position = "left",
+          size = 40
+        }, {
+            elements = { {
+              id = "console",
+              size = 0.5
+            }, {
+                id = "repl",
+                size = 0.5
+              } },
+            position = "bottom",
+            size = 15
+          } },
+      })
 
       require("nvim-dap-virtual-text").setup({
         enabled = true,                        -- enable this plugin (the default)
@@ -94,12 +122,12 @@ return {
       vim.keymap.set("n", "<leader>do", ":lua require'dapui'.open()<cr>", { silent = true })
       vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true })
       vim.keymap.set("n", "<leader>dc", ":lua require'dapui'.close()<cr>", { silent = true })
-      vim.keymap.set("n", "<F1>", dap.continue)
-      vim.keymap.set("n", "<F2>", dap.step_into)
-      vim.keymap.set("n", "<F3>", dap.step_over)
-      vim.keymap.set("n", "<F4>", dap.step_out)
-      vim.keymap.set("n", "<F5>", dap.step_back)
-      vim.keymap.set("n", "<F6>", dap.restart)
+      vim.keymap.set("n", "<F5>", dap.continue)
+      vim.keymap.set("n", "<F1>", dap.step_into)
+      vim.keymap.set("n", "<F2>", dap.step_over)
+      vim.keymap.set("n", "<F3>", dap.step_out)
+      -- vim.keymap.set("n", "<F5>", dap.step_back)
+      vim.keymap.set("n", "<F12>", dap.restart)
 
       dap.listeners.before.attach.dapui_config = function()
         ui.open()

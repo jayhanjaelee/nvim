@@ -2,6 +2,8 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
+    local navic = require("nvim-navic")
+
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -24,7 +26,17 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
-				lualine_c = { "filename" },
+        lualine_c = {
+          {
+            "filename",
+          },
+          {
+            "navic",
+            -- Component specific options
+            color_correction = nil, -- Can be nil, "static" or "dynamic".
+            navic_opts = nil -- lua table with same format as setup's option.
+          },
+        },
 				lualine_x = {
           {
             'diagnostics',

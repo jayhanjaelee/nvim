@@ -45,15 +45,22 @@ return {
 			lspconfig.ts_ls.setup({})
       -- c
 			lspconfig.clangd.setup({
+        -- on_attach = on_attach
+        on_attach = function(client, bufnr)
+          require('nvim-navic').attach(client, bufnr)
+        end
         -- cmd = { "--function-arg-placeholders" }
       })
       -- php
-			lspconfig.intelephense.setup({
-				cmd = { "intelephense", "--stdio" },
-				filetypes = "php",
+      lspconfig.intelephense.setup({
+        cmd = { "intelephense", "--stdio" },
+        filetypes = "php",
         -- root_dir = lspconfig.util.root_pattern("composer.json", ".git", ".svn"),
-				-- root_dir = custom_lsp_attach,
-			})
+        -- root_dir = custom_lsp_attach,
+        on_attach = function(client, bufnr)
+          require('nvim-navic').attach(client, bufnr)
+        end
+      })
       -- assembly
       lspconfig.asm_lsp.setup{
         cmd = {"asm-lsp"},

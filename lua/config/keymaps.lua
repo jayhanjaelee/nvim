@@ -27,7 +27,11 @@ mapKey('<C-p>', ':bp<cr>')
 mapKey('<C-n>', ':bn<cr>')
 mapKey('<leader>dd', ':bd<cr>')
 mapKey('<leader>da', ':%bd|e#|bd#<cr>') -- delete other buffers
-mapKey('<leader>l', ':ls<cr>') -- delete other buffers
+mapKey('<leader>l', ':ls<cr>')
+
+-- tabpage
+mapKey('<leader>t', ':tabnew %<cr>')
+mapKey('<leader>w', ':tabclose<cr>')
 
 -- zoom
 mapKey('<C-w>z', '<C-w>_<C-w>|');
