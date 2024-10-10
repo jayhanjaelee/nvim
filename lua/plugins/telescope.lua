@@ -24,9 +24,10 @@ return {
       require('telescope').setup({
         defaults = {
           file_ignore_patterns = {
-            '^node_modules/',
+            'node_modules',
             'vendor/*',
-            '.*min.js'
+            '.*min.js',
+            -- '.*.log'
           },
         },
         extensions = {
