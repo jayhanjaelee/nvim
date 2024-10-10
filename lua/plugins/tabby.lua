@@ -16,6 +16,7 @@ return {
     -- local mapKey = require('utils.keyMapper').mapKey
     require('tabby').setup({
       -- mapKey('<leader>s', ':Tabby pick_window<cr>'),
+      vim.keymap.set("n", "<leader>,", ":Tabby rename_tab "),
       line = function(line)
         return {
           {
