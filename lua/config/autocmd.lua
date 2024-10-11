@@ -16,5 +16,6 @@ vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=o]])
 
 -- indent for file type
 vim.cmd([[autocmd FileType php setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab]])
+vim.cmd([[autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab]])
 vim.cmd([[autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab]])
 vim.cmd([[autocmd FileType mustache setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab]])
