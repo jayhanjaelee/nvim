@@ -55,7 +55,7 @@ return {
       require("dapui").setup({
         layouts = { {
           elements = { {
-            id = "breakpoint",
+            id = "breakpoints",
             size = 0.25
           }, {
               id = "stacks",
@@ -123,6 +123,7 @@ return {
       vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true })
       vim.keymap.set("n", "<leader>dc", ":lua require'dapui'.close()<cr>", { silent = true })
       vim.keymap.set("n", "<F5>", dap.continue)
+      vim.keymap.set("n", "<S-F5>", dap.terminate)
       vim.keymap.set("n", "<F1>", dap.step_into)
       vim.keymap.set("n", "<F2>", dap.step_over)
       vim.keymap.set("n", "<F3>", dap.step_out)

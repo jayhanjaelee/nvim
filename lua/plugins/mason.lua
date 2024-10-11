@@ -55,11 +55,14 @@ return {
       lspconfig.intelephense.setup({
         cmd = { "intelephense", "--stdio" },
         filetypes = "php",
-        -- root_dir = lspconfig.util.root_pattern("composer.json", ".git", ".svn"),
-        -- root_dir = custom_lsp_attach,
-        on_attach = function(client, bufnr)
-          require('nvim-navic').attach(client, bufnr)
-        end
+        -- root_dir = function()
+        --   return lspconfig.util.root_pattern(
+        --     "composer.json", ".git", ".svn"
+        --   )(fname) or vim.fn.getcwd()
+        -- end
+        root_dir = lspconfig.util.root_pattern(
+          "composer.json", ".git", ".svn"
+        )
       })
       -- assembly
       lspconfig.asm_lsp.setup{

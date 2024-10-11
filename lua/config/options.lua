@@ -30,6 +30,7 @@ opt.path:append('**')
 opt.encoding = "UTF-8"
 opt.cmdheight = 1
 opt.scrolloff = 10
+opt.mouse = ""
 -- opt.mouse:append("a")
 
 -- tabby
