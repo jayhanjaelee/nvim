@@ -55,11 +55,6 @@ return {
       lspconfig.intelephense.setup({
         cmd = { "intelephense", "--stdio" },
         filetypes = "php",
-        -- root_dir = function()
-        --   return lspconfig.util.root_pattern(
-        --     "composer.json", ".git", ".svn"
-        --   )(fname) or vim.fn.getcwd()
-        -- end
         root_dir = lspconfig.util.root_pattern(
           "composer.json", ".git", ".svn"
         )
