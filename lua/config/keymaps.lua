@@ -38,4 +38,4 @@ mapKey('<C-w>z', '<C-w>_<C-w>|');
 
 -- file
 mapKey('<C-g>', '1<C-g>')
-mapKey('<leader>r', ':browse oldfiles!<cr>')
+-- mapKey('<leader>r', ':browse oldfiles!<cr>')

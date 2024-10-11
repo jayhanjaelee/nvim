@@ -5,6 +5,14 @@ return {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
+      require('telescope').setup{
+        extensions = {
+          recent_files = {
+            ignore_patterns = {}
+          }
+        }
+      }
+
       local builtin = require("telescope.builtin")
       local themes = require('telescope.themes')
 
@@ -55,6 +63,18 @@ return {
         }
       })
       require("telescope").load_extension("ui-select")
+    end
+  },
+  {
+    "smartpde/telescope-recent-files",
+    config = function()
+      require('telescope').setup({
+        require('telescope').load_extension("recent_files")
+      })
+      -- Map a shortcut to open the picker.
+      vim.api.nvim_set_keymap("n", "<leader>r",
+        [[<cmd>lua require('telescope').extensions.recent_files.pick(require('telescope.themes').get_ivy({}))<CR>]],
+        {noremap = true, silent = true})
     end
   }
 }
