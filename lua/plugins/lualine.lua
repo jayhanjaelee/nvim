@@ -45,7 +45,7 @@ return {
         },
         highlight = false,
         separator = " > ",
-        depth_limit = 1,
+        depth_limit = 0,
         depth_limit_indicator = "..",
         safe_output = true,
         lazy_update_context = false,
