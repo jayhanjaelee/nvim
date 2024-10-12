@@ -5,6 +5,7 @@ local custom_lsp_attach = function(client)
 end
 
 return {
+  -- Mason
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -27,6 +28,7 @@ return {
 			})
 		end,
 	},
+  -- LSPconfig
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -77,7 +79,6 @@ return {
 			keyMapper("<leader>ca", vim.lsp.buf.code_action)
 		end,
 	},
-
   -- Formatter
 	{
 		"jay-babu/mason-null-ls.nvim",

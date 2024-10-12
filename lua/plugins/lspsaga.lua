@@ -8,6 +8,7 @@ return {
     local keymap = vim.keymap.set
     require('lspsaga').setup({
       symbol_in_winbar = {
+        enable = false,
         folder_level = 1
       },
       lightbulb = {

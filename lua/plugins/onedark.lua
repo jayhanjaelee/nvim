@@ -18,7 +18,7 @@ return {
       lualine = {
         transparent = true
       },
-      require('onedark').load(),
+      -- require('onedark').load(),
     })
 
     -- disable italic
