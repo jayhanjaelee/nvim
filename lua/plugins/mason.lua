@@ -33,6 +33,8 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
+      local navic = require("nvim-navic")
+
       -- lua
 			lspconfig.lua_ls.setup({
         settings = {
@@ -59,7 +61,10 @@ return {
         filetypes = "php",
         root_dir = lspconfig.util.root_pattern(
           "composer.json", ".git", ".svn"
-        )
+        ),
+        on_attach = function(client, bufnr)
+          navic.attach(client, bufnr)
+        end
       })
       -- assembly
       lspconfig.asm_lsp.setup{
