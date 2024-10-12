@@ -6,6 +6,10 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('telescope').setup{
+        defaults = {
+        },
+        pickers = {
+        },
         extensions = {
           recent_files = {
             ignore_patterns = {}
