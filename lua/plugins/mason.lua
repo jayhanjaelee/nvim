@@ -59,10 +59,12 @@ return {
         on_attach = custom_attach,
         cmd = { "intelephense", "--stdio" },
         filetypes = "php",
-        single_file_support = false,
         root_dir = lspconfig.util.root_pattern(
           ".svn", "composer.json", ".git"
-        ),
+        ) or vim.fn.getcwd(),
+        -- on_attach = function(client, bufnr)
+        --   navic.attach(client, bufnr)
+        -- end
       })
       -- assembly
       lspconfig.asm_lsp.setup{

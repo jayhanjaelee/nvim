@@ -22,7 +22,7 @@ return {
       end
 
       -- change symbol color for breakpoint
-      vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#e86671', bg = '#282c34' })
+      vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg = '#e86671', bg = 'NONE' })
       vim.fn.sign_define('DapBreakpoint', {text='B', texthl='DapBreakpoint', linehl='', numhl=''})
 
       -- php

@@ -105,9 +105,6 @@ return {
         lspconfig[ls].setup {
           -- on_attach = my_custom_on_attach,
           capabilities = capabilities,
-          root_dir = lspconfig.util.root_pattern(
-            ".svn", "composer.json", ".git"
-          ),
         }
       end
 

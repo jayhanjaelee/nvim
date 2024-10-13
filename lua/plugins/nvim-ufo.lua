@@ -18,10 +18,6 @@ return {
     for _, ls in ipairs(language_servers) do
       lspconfig[ls].setup({
         capabilities = capabilities,
-        root_dir = lspconfig.util.root_pattern(
-          ".svn", "composer.json", ".git"
-        ),
-        -- you can add other fields for setting up lsp server in this table
       })
     end
     require('ufo').setup()
