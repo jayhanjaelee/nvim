@@ -1,5 +1,28 @@
 local mapKey = require("utils.keyMapper").mapKey
 
+-- hover
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {border = 'rounded'}
+)
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {border = 'rounded'}
+)
+vim.diagnostic.config({
+  float = {
+    border = 'rounded',
+  },
+})
+
+-- Add border to the diagnostic popup window
+vim.diagnostic.config({
+    -- virtual_text = {
+    --     prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
+    -- },
+    float = { border = border },
+})
+
 return {
   -- Mason
 	{
@@ -56,7 +79,6 @@ return {
 			lspconfig.clangd.setup({})
       -- php
       lspconfig.intelephense.setup({
-        on_attach = custom_attach,
         cmd = { "intelephense", "--stdio" },
         filetypes = "php",
         root_dir = lspconfig.util.root_pattern(
