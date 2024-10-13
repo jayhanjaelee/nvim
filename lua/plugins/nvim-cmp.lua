@@ -88,6 +88,9 @@ return {
             })[entry.source.name]
             return vim_item
           end
+        },
+        performance = {
+          max_view_entries = 15
         }
       })
 
@@ -102,6 +105,9 @@ return {
         lspconfig[ls].setup {
           -- on_attach = my_custom_on_attach,
           capabilities = capabilities,
+          root_dir = lspconfig.util.root_pattern(
+            ".svn", "composer.json", ".git"
+          ),
         }
       end
 

@@ -12,10 +12,15 @@ return {
       dynamicRegistration = false,
       lineFoldingOnly = true
     }
-    local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+
+    local lspconfig = require("lspconfig")
+    local language_servers = lspconfig.util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
     for _, ls in ipairs(language_servers) do
-      require('lspconfig')[ls].setup({
-        capabilities = capabilities
+      lspconfig[ls].setup({
+        capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern(
+          ".svn", "composer.json", ".git"
+        ),
         -- you can add other fields for setting up lsp server in this table
       })
     end
