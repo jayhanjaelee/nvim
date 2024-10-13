@@ -1,8 +1,4 @@
 local mapKey = require("utils.keyMapper").mapKey
-local custom_lsp_attach = function(client)
-  vim.api.nvim_set_current_dir(client.config.root_dir)
-  -- other stuff...
-end
 
 return {
   -- Mason
@@ -57,24 +53,16 @@ return {
       -- js & ts
 			lspconfig.ts_ls.setup({})
       -- c
-			lspconfig.clangd.setup({
-        -- on_attach = on_attach
-        -- on_attach = function(client, bufnr)
-        --   require('nvim-navic').attach(client, bufnr)
-        -- end
-        -- cmd = { "--function-arg-placeholders" }
-      })
+			lspconfig.clangd.setup({})
       -- php
       lspconfig.intelephense.setup({
+        on_attach = custom_attach,
         cmd = { "intelephense", "--stdio" },
         filetypes = "php",
         single_file_support = false,
         root_dir = lspconfig.util.root_pattern(
           ".svn", "composer.json", ".git"
         ),
-        -- on_attach = function(client, bufnr)
-        --   navic.attach(client, bufnr)
-        -- end
       })
       -- assembly
       lspconfig.asm_lsp.setup{

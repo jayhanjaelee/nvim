@@ -43,7 +43,10 @@ return {
       end)
 
       mapKey('gr', function()
-        builtin.lsp_references(themes.get_ivy(opts))
+        builtin.lsp_references(themes.get_ivy({
+          layout_config = { height = 0.5 },
+          show_line = false
+        }))
       end)
 
       mapKey('<leader>m', function()
