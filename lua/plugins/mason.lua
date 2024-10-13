@@ -1,4 +1,4 @@
-local keyMapper = require("utils.keyMapper").mapKey
+local mapKey = require("utils.keyMapper").mapKey
 local custom_lsp_attach = function(client)
   vim.api.nvim_set_current_dir(client.config.root_dir)
   -- other stuff...
@@ -59,6 +59,7 @@ return {
       lspconfig.intelephense.setup({
         cmd = { "intelephense", "--stdio" },
         filetypes = "php",
+        single_file_support = false,
         root_dir = lspconfig.util.root_pattern(
           "composer.json", ".git", ".svn"
         ),
@@ -79,9 +80,9 @@ return {
       -- python
       lspconfig.pylsp.setup{}
 
-			keyMapper("K", vim.lsp.buf.hover)
-			keyMapper("gd", vim.lsp.buf.definition)
-			keyMapper("<leader>ca", vim.lsp.buf.code_action)
+			mapKey("K", vim.lsp.buf.hover)
+			mapKey("gd", vim.lsp.buf.definition)
+			mapKey("<leader>ca", vim.lsp.buf.code_action)
 		end,
 	},
   -- Formatter

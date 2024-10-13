@@ -18,7 +18,7 @@ return {
       show_layout = 'normal',
 
       -- key mapping
-      keymap("n", "<leader>m", "<cmd>Lspsaga show_buf_diagnostics ++normal<CR>"),
+      -- keymap("n", "<leader>m", "<cmd>Lspsaga show_buf_diagnostics ++normal<CR>"),
       -- keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics ++normal<CR>"),
       -- Diagnostic jump,
       -- You can use <C-o> to jump back to your previous location,

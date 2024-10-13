@@ -7,6 +7,8 @@ return {
     config = function()
       require('telescope').setup{
         defaults = {
+          layout_strategy = 'ivy',
+          layout_config = { height = 0.1 }
         },
         pickers = {
         },
@@ -20,21 +22,39 @@ return {
       local builtin = require("telescope.builtin")
       local themes = require('telescope.themes')
 
+      local opts = {
+        layout_config = { height = 0.5 }
+      }
+
       mapKey('<Leader>ff', function()
-        builtin.find_files(themes.get_ivy({}))
+        builtin.find_files(themes.get_ivy(opts))
       end)
 
       mapKey('<Leader>fg', function()
-        builtin.live_grep(themes.get_ivy({}))
+        builtin.live_grep(themes.get_ivy(opts))
       end)
 
       mapKey('<Leader>fb', function()
-        builtin.buffers(themes.get_ivy({}))
+        builtin.buffers(themes.get_ivy(opts))
       end)
 
       mapKey('<Leader>fh', function()
-        builtin.help_tags(themes.get_ivy({}))
+        builtin.help_tags(themes.get_ivy(opts))
       end)
+
+      mapKey('gr', function()
+        builtin.lsp_references(themes.get_ivy(opts))
+      end)
+
+      mapKey('<leader>m', function()
+        builtin.diagnostics(themes.get_ivy(
+          { bufnr = 0, layout_config = { height = 0.5 } }
+        ))
+      end)
+      
+      -- mapKey('gr', function()
+      --   builtin.lsp_references(themes.get_ivy({}))
+      -- end)
       -- mapKey('<leader>ff', builtin.find_files)
       -- mapKey('<leader>fg', builtin.live_grep)
       -- mapKey('<leader>fb', builtin.buffers)
