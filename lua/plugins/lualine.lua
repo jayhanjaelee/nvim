@@ -37,7 +37,7 @@ return {
           TypeParameter = "󰊄 ",
         },
         lsp = {
-          auto_attach = true,
+          auto_attach = false,
           preference = {
             "intelephense",
             "clangd",

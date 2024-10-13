@@ -34,6 +34,9 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
       local navic = require("nvim-navic")
+      local result = lspconfig.util.root_pattern(
+        ".svn", "composer.json", ".git"
+      )
 
       -- lua
 			lspconfig.lua_ls.setup({
@@ -45,14 +48,20 @@ return {
           }
         }
       })
+
+      -- lspconfig.phpactor.setup{
+      --   root_dir = lspconfig.util.root_pattern(
+      --     ".svn"
+      --   ),
+      -- }
       -- js & ts
 			lspconfig.ts_ls.setup({})
       -- c
 			lspconfig.clangd.setup({
         -- on_attach = on_attach
-        on_attach = function(client, bufnr)
-          require('nvim-navic').attach(client, bufnr)
-        end
+        -- on_attach = function(client, bufnr)
+        --   require('nvim-navic').attach(client, bufnr)
+        -- end
         -- cmd = { "--function-arg-placeholders" }
       })
       -- php
@@ -61,11 +70,11 @@ return {
         filetypes = "php",
         single_file_support = false,
         root_dir = lspconfig.util.root_pattern(
-          "composer.json", ".git", ".svn"
+          ".svn", "composer.json", ".git"
         ),
-        on_attach = function(client, bufnr)
-          navic.attach(client, bufnr)
-        end
+        -- on_attach = function(client, bufnr)
+        --   navic.attach(client, bufnr)
+        -- end
       })
       -- assembly
       lspconfig.asm_lsp.setup{
