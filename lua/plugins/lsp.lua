@@ -79,14 +79,15 @@ return {
 			lspconfig.clangd.setup({})
       -- php
       lspconfig.intelephense.setup({
-        cmd = { "intelephense", "--stdio" },
-        filetypes = "php",
-        root_dir = lspconfig.util.root_pattern(
-          ".svn", "composer.json", ".git"
-        ) or vim.fn.getcwd(),
-        -- on_attach = function(client, bufnr)
-        --   navic.attach(client, bufnr)
-        -- end
+        cmd = { 'intelephense', '--stdio' },
+        filetypes = { 'php' },
+        root_dir = function(pattern)
+          local cwd = vim.uv.cwd()
+          local root = lspconfig.util.root_pattern('composer.json', '.git', '.svn')(pattern)
+
+          -- prefer cwd if root is a descendant
+          return lspconfig.util.path.is_descendant(cwd, root) and cwd or root
+        end,
       })
       -- assembly
       lspconfig.asm_lsp.setup{

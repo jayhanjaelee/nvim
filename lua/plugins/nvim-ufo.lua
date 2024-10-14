@@ -18,6 +18,13 @@ return {
     for _, ls in ipairs(language_servers) do
       lspconfig[ls].setup({
         capabilities = capabilities,
+        root_dir = function(pattern)
+          local cwd = vim.uv.cwd()
+          local root = lspconfig.util.root_pattern('composer.json', '.git', '.svn', 'index.php', 'lib.php', 'config.php')(pattern)
+
+          -- prefer cwd if root is a descendant
+          return lspconfig.util.path.is_descendant(cwd, root) and cwd or root
+        end,
       })
     end
     require('ufo').setup()
