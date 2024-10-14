@@ -9,6 +9,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
   {border = 'rounded'}
 )
+
 vim.diagnostic.config({
   float = {
     border = 'rounded',
@@ -50,12 +51,12 @@ return {
   -- LSPconfig
 	{
 		"neovim/nvim-lspconfig",
-		config = function()
+    config = function()
 			local lspconfig = require("lspconfig")
       local navic = require("nvim-navic")
-      local result = lspconfig.util.root_pattern(
-        ".svn", "composer.json", ".git"
-      )
+
+      vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+      vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
 
       -- lua
 			lspconfig.lua_ls.setup({
@@ -68,11 +69,6 @@ return {
         }
       })
 
-      -- lspconfig.phpactor.setup{
-      --   root_dir = lspconfig.util.root_pattern(
-      --     ".svn"
-      --   ),
-      -- }
       -- js & ts
 			lspconfig.ts_ls.setup({})
       -- c
