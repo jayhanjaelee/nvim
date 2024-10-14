@@ -1,5 +1,17 @@
 local mapKey = require("utils.keyMapper").mapKey
 
+vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
+  local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.diagnostic.reset(ns, bufnr)
+  return true
+end
+
+-- virtual text
+vim.diagnostic.config({
+  virtual_text = true,
+})
+
 -- hover
 -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
 --   vim.lsp.handlers.hover,
@@ -15,14 +27,6 @@ local mapKey = require("utils.keyMapper").mapKey
 --     border = 'rounded',
 --   },
 -- })
-
--- Add border to the diagnostic popup window
-vim.diagnostic.config({
-    -- virtual_text = {
-    --     prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
-    -- },
-    float = { border = border },
-})
 
 return {
   -- Mason
