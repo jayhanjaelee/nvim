@@ -119,18 +119,19 @@ return {
         require("dapui").eval(nil, { enter = true })
       end)
 
-      -- vim.keymap.set("n", "<leader>do", ":lua require'dapui'.open()<cr>", { silent = true })
-      -- vim.keymap.set("n", "<leader>dc", ":lua require'dapui'.close()<cr>", { silent = true })
-      vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true })
-      vim.keymap.set("n", "<F5>", dap.continue)
       local terminateDap = function()
         vim.cmd('DapTerminate')
         vim.cmd("lua require'dapui'.close()")
       end
-      vim.keymap.set("n", "<leader>dc", terminateDap, { silent = true })
-      vim.keymap.set("n", "<F1>", dap.step_into)
-      vim.keymap.set("n", "<F2>", dap.step_over)
-      vim.keymap.set("n", "<F3>", dap.step_out)
+
+      -- vim.keymap.set("n", "<leader>do", ":lua require'dapui'.open()<cr>", { silent = true })
+      -- vim.keymap.set("n", "<leader>dc", ":lua require'dapui'.close()<cr>", { silent = true })
+      vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true })
+      vim.keymap.set("n", "<F5>", dap.continue)
+      vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true })
+      vim.keymap.set("n", "<F10>", dap.step_over)
+      vim.keymap.set("n", "<F11>", dap.step_into)
+      vim.keymap.set("n", "<S-F11>", dap.step_out)
       -- vim.keymap.set("n", "<F5>", dap.step_back)
       vim.keymap.set("n", "<leader>dr", dap.restart)
 
