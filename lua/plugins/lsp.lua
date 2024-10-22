@@ -44,7 +44,7 @@ return {
 				ensure_installed = {
 					"lua_ls", -- php
 					"clangd", -- c
-          "asm_lsp", -- assembly
+          -- "asm_lsp", -- assembly
 					"ts_ls", -- javascript & typescript
 					"intelephense", -- php
           "pylsp", -- python

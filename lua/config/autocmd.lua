@@ -51,3 +51,21 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "FileReadPre" }, {
     group = "BigFileDisable",
     callback = check_file_size,
 })
+
+-- use system clipboard by default
+if vim.fn.has('clipboard') == 1 then
+  -- Use the system clipboard for yanking and pasting
+  vim.opt.clipboard = 'unnamedplus'  -- Use the + register for the clipboard
+end
+
+-- WSL yank support
+local clip = '/mnt/c/Windows/System32/clip.exe'  -- change this path according to your mount point
+
+if vim.fn.executable(clip) == 1 then
+    vim.api.nvim_exec([[
+        augroup WSLYank
+            autocmd!
+            autocmd TextYankPost * if v:event.operator ==# 'y' | call system(']] .. clip .. [[' , @0) | endif
+        augroup END
+    ]], false)
+end
