@@ -9,7 +9,7 @@ end
 
 -- virtual text
 vim.diagnostic.config({
-  virtual_text = true,
+  virtual_text = false,
 })
 
 -- hover

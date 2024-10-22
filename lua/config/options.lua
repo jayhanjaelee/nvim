@@ -34,4 +34,7 @@ opt.mouse = ""
 -- opt.mouse:append("a")
 
 -- tabby
-opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+-- opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+
+-- auto-session
+opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
