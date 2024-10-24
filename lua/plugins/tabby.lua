@@ -20,7 +20,8 @@ return {
       line = function(line)
         return {
           {
-            { '  ', hl = theme.head },
+            -- { '  ', hl = theme.head }, -- vim logo
+            { '  ', hl = theme.head }, -- neovim logo
             line.sep('', theme.head, theme.fill),
           },
           line.tabs().foreach(function(tab)
