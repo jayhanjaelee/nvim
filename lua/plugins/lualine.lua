@@ -37,7 +37,7 @@ return {
           TypeParameter = "󰊄 ",
         },
         lsp = {
-          auto_attach = false,
+          auto_attach = true,
           preference = {
             "intelephense",
             "clangd",
@@ -90,6 +90,7 @@ return {
               "filename",
             },
             {
+              -- nvim-navic
               function()
                   return navic.get_location()
               end,
