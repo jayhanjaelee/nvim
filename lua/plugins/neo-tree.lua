@@ -157,6 +157,13 @@ return {
         symlink_target = {
           enabled = false,
         },
+      },
+      window = {
+        mappings = {
+          ["/"] = "noop",
+          ["?"] = "noop",
+          ["<leader>?"] = "show_help",
+        }
       }
     })
   end,
