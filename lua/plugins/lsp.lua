@@ -88,6 +88,9 @@ return {
           -- prefer cwd if root is a descendant
           return lspconfig.util.path.is_descendant(cwd, root) and cwd or root
         end,
+        on_attach = function(client, bufnr)
+            navic.attach(client, bufnr)
+        end,
       })
       -- assembly
       lspconfig.asm_lsp.setup{

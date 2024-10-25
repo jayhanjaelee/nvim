@@ -90,10 +90,12 @@ return {
               "filename",
             },
             {
-              "navic",
-              -- Component specific options
-              color_correction = nil, -- Can be nil, "static" or "dynamic".
-              navic_opts = nil -- lua table with same format as setup's option.
+              function()
+                  return navic.get_location()
+              end,
+              cond = function()
+                  return navic.is_available()
+              end
             },
           },
           lualine_x = {
