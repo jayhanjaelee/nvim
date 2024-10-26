@@ -1,14 +1,49 @@
 local mapKey = require("utils.keyMapper").mapKey
 
+function telescope_open_single_or_multi(bufnr)
+  local actions = require("telescope.actions")
+  local actions_state = require("telescope.actions.state")
+  local single_selection = actions_state.get_selected_entry()
+  local multi_selection = actions_state.get_current_picker(bufnr):get_multi_selection()
+  if not vim.tbl_isempty(multi_selection) then
+    actions.close(bufnr)
+    for _, file in pairs(multi_selection) do
+      if file.path ~= nil then
+        vim.cmd(string.format("edit %s", file.path))
+      end
+    end
+    vim.cmd(string.format("edit %s", single_selection.path))
+  else
+    actions.select_default(bufnr)
+  end
+end
+
 return {
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
+      local builtin = require('telescope.builtin')
+      local actions = require('telescope.actions')
+      local themes = require('telescope.themes')
+
       require('telescope').setup{
         defaults = {
           layout_strategy = 'ivy',
-          layout_config = { height = 0.1 }
+          layout_config = { height = 0.1 },
+          mappings = {
+            i = {
+              ['<esc>'] = actions.close,
+              ['<C-j>'] = actions.move_selection_next,
+              ['<C-k>'] = actions.move_selection_previous,
+              ["<c-d>"] = actions.delete_buffer,
+              ["<CR>"] = telescope_open_single_or_multi,
+            },
+            n = {
+              ['<esc>'] = actions.close,
+              ["dd"] = actions.delete_buffer,
+            },
+          }
         },
         pickers = {
         },
@@ -18,9 +53,6 @@ return {
           }
         }
       }
-
-      local builtin = require("telescope.builtin")
-      local themes = require('telescope.themes')
 
       local opts = {
         layout_config = { height = 0.5 }
