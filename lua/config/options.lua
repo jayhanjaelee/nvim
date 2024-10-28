@@ -22,7 +22,14 @@ opt.relativenumber = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.list = false
-opt.listchars:append("eol:󰌑")
+opt.listchars = {
+    -- space = "",    -- Character for spaces
+    tab = " ",       -- Character for tabs
+    eol = "󰌑",        -- Character for end of line
+    trail = "󱁐",      -- Character for trailing spaces
+    extends = ">",    -- Character for overflows to the right
+    precedes = "<"    -- Character for overflows to the left
+}
 
 -- file system
 opt.path:append('**')
