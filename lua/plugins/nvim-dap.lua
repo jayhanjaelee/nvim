@@ -134,6 +134,7 @@ return {
       -- vim.keymap.set("n", "<leader>do", ":lua require'dapui'.open()<cr>", { silent = true })
       -- vim.keymap.set("n", "<leader>dc", ":lua require'dapui'.close()<cr>", { silent = true })
       vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true })
+      vim.keymap.set("n", "<leader>de", ":lua require'dapui'.elements.watches.add(vim.fn.expand('<cexpr>'))<cr>", { silent = true })
       vim.keymap.set("n", "<F5>", dap.continue)
       vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true })
       vim.keymap.set("n", "<F10>", dap.step_over)
