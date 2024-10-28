@@ -21,6 +21,8 @@ opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
+opt.list = false
+opt.listchars:append("eol:󰌑")
 
 -- file system
 opt.path:append('**')
