@@ -37,6 +37,7 @@ return {
               ['<C-j>'] = actions.move_selection_next,
               ['<C-k>'] = actions.move_selection_previous,
               ["<c-d>"] = actions.delete_buffer,
+              ["<c-h>"] = actions.select_horizontal,
               ["<CR>"] = telescope_open_single_or_multi,
             },
             n = {
