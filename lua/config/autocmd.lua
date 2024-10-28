@@ -19,6 +19,7 @@ vim.cmd([[autocmd FileType php setlocal shiftwidth=4 tabstop=4 softtabstop=4 exp
 vim.cmd([[autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType mustache setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
+vim.cmd([[autocmd FileType css setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 
 -- large file loading performance
 local function disable_syntax_treesitter()
