@@ -21,7 +21,7 @@ return {
           Enum          = "󰕘",
           Interface     = "󰕘",
           Function      = "󰊕 ",
-          Variable      = "󰆧 ",
+          Variable      = "󰫧 ",
           Constant      = "󰏿 ",
           String        = "󰀬 ",
           Number        = "󰎠 ",
