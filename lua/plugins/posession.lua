@@ -9,14 +9,14 @@ return {
       logfile = false,
       prompt_no_cr = true,
       autosave = {
-        current = false,  -- or fun(name): boolean
+        current = true,  -- or fun(name): boolean
         cwd = true, -- or fun(): boolean
         tmp = false,  -- or fun(): boolean
         tmp_name = 'tmp', -- or fun(): string
         on_load = true,
         on_quit = true,
       },
-      autoload = false, -- or 'last' or 'auto_cwd' or 'last_cwd' or fun(): string
+      autoload = 'last_cwd', -- or 'last' or 'auto_cwd' or 'last_cwd' or fun(): string
       commands = {
         save = 'SSave',
         load = 'SLoad',
