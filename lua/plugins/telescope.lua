@@ -29,7 +29,6 @@ return {
 
       require('telescope').setup{
         defaults = {
-          layout_strategy = 'ivy',
           layout_config = { height = 0.1 },
           mappings = {
             i = {
@@ -71,6 +70,7 @@ return {
         }
       }
       require("telescope").load_extension("aerial")
+      require('telescope').load_extension('possession')
 
       local opts = {
         layout_config = { height = 0.5 }
@@ -94,6 +94,10 @@ return {
 
       mapKey('<Leader>fo', function()
         require("telescope").extensions.aerial.aerial(themes.get_ivy(opts))
+      end)
+
+      mapKey('<Leader>fs', function()
+        require("telescope").extensions.possession.list(themes.get_ivy(opts))
       end)
 
       mapKey('gr', function()
