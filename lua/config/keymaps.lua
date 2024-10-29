@@ -34,7 +34,7 @@ mapKey('<leader>t', ':tabnew %<cr>')
 mapKey('<leader>w', ':tabclose<cr>')
 
 -- zoom
-mapKey('<C-w>z', '<C-w>_<C-w>|');
+-- mapKey('<C-w>z', '<C-w>_<C-w>|');
 
 -- file
 mapKey('<C-g>', '1<C-g>')

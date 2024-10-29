@@ -2,7 +2,7 @@ return {
   'jedrzejboczar/possession.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
-    require('possession').setup {
+    require('possession').setup{
       silent = false,
       load_silent = true,
       debug = false,
@@ -87,5 +87,10 @@ return {
         },
       },
     }
+
+    vim.keymap.set("n", "<leader>sa", ":SSave<cr>")
+    vim.keymap.set("n", "<leader>sl", ":SLoad<cr>")
+    vim.keymap.set("n", "<leader>sd", ":SDelete<cr>")
+    vim.keymap.set("n", "<leader>sr", ":SRename<cr>")
   end
 }

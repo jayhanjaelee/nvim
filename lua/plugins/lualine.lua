@@ -101,6 +101,7 @@ return {
           },
           lualine_x = {
             {
+              "vim.fn['zoom#statusline']()",
               'diagnostics',
               -- Table of diagnostic sources, available sources are:
               --   'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic', 'coc', 'ale', 'vim_lsp'.
