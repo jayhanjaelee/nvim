@@ -5,16 +5,18 @@ return {
   config = function()
     -- configs...
     local theme = {
-      -- fill = 'TabLineFill',
-      fill = { fg='#000000', bg='#000000' },
+      fill = 'TabLineFill',
       head = 'TabLine',
       current_tab = 'TabLineSel',
       tab = 'TabLine',
       win = 'TabLine',
       tail = 'TabLine',
     }
-    -- local mapKey = require('utils.keyMapper').mapKey
     require('tabby').setup({
+      vim.api.nvim_set_hl(0, "TabLineFill", { fg = "#000000", bg = "#000000" }),
+      vim.api.nvim_set_hl(0, "TabLine", { fg = "#696969", bg = "#000000" }),
+      vim.api.nvim_set_hl(0, "TabLineSel", { fg='#afb2b0', bg='#282828' }),
+
       -- mapKey('<leader>s', ':Tabby pick_window<cr>'),
       vim.keymap.set("n", "<leader>,", ":Tabby rename_tab "),
       line = function(line)
@@ -38,20 +40,6 @@ return {
             }
           end),
           line.spacer(),
-          -- line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-          --   return {
-          --     line.sep('', theme.win, theme.fill),
-          --     win.is_current() and '' or '',
-          --     win.buf_name(),
-          --     line.sep('', theme.win, theme.fill),
-          --     hl = theme.win,
-          --     margin = ' ',
-          --   }
-          -- end),
-          -- {
-          --   line.sep('', theme.tail, theme.fill),
-          --   { '  ', hl = theme.tail },
-          -- },
           hl = theme.fill,
         }
       end,
