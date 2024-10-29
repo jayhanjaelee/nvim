@@ -11,7 +11,7 @@ opt.indentexpr = ""
 opt.wrap = false
 
 -- search
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
@@ -30,6 +30,7 @@ opt.listchars = {
     extends = ">",    -- Character for overflows to the right
     precedes = "<"    -- Character for overflows to the left
 }
+opt.cmdwinheight = 10
 
 -- file system
 opt.path:append('**')
