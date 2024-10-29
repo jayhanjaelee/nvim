@@ -5,17 +5,18 @@ return {
   config = function()
     -- configs...
     local theme = {
-      fill = 'TabLineFill',
-      head = 'TabLine',
-      current_tab = 'TabLineSel',
-      tab = 'TabLine',
-      win = 'TabLine',
-      tail = 'TabLine',
+      fill = { fg = "#000000", bg = "#000000" },
+      head = { fg = "#696969", bg = "#000000" },
+      current_tab = { fg='#afb2b0', bg='#282828' },
+      tab = { fg = "#696969", bg = "#000000" },
+      win = { fg = "#696969", bg = "#000000" },
+      tail = { fg = "#696969", bg = "#000000" },
     }
     require('tabby').setup({
-      vim.api.nvim_set_hl(0, "TabLineFill", { fg = "#000000", bg = "#000000" }),
-      vim.api.nvim_set_hl(0, "TabLine", { fg = "#696969", bg = "#000000" }),
-      vim.api.nvim_set_hl(0, "TabLineSel", { fg='#afb2b0', bg='#282828' }),
+      -- not working
+      -- vim.api.nvim_set_hl(0, "MyTabLineFill", { fg = "#000000", bg = "#000000" }),
+      -- vim.api.nvim_set_hl(0, "MyTabLine", { fg = "#696969", bg = "#000000" }),
+      -- vim.api.nvim_set_hl(0, "MyTabLineSel", { fg='#afb2b0', bg='#282828' }),
 
       -- mapKey('<leader>s', ':Tabby pick_window<cr>'),
       vim.keymap.set("n", "<leader>,", ":Tabby rename_tab "),
