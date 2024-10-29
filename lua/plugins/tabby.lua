@@ -5,8 +5,8 @@ return {
   config = function()
     -- configs...
     local theme = {
-      fill = 'TabLineFill',
-      -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
+      -- fill = 'TabLineFill',
+      fill = { fg='#000000', bg='#000000' },
       head = 'TabLine',
       current_tab = 'TabLineSel',
       tab = 'TabLine',
