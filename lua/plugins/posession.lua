@@ -7,7 +7,7 @@ return {
       load_silent = true,
       debug = false,
       logfile = false,
-      prompt_no_cr = false,
+      prompt_no_cr = true,
       autosave = {
         current = false,  -- or fun(name): boolean
         cwd = true, -- or fun(): boolean
