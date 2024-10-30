@@ -1,5 +1,6 @@
 return {
   'deparr/tairiki.nvim',
+  priority = 1000,
   config = function()
     require('tairiki').setup{
       -- Main options --

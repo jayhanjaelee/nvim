@@ -24,6 +24,7 @@ return {
       -- change symbol color for breakpoint
       vim.api.nvim_set_hl(0, 'lightred', { fg = '#cc6666', bg = 'NONE' })
       vim.fn.sign_define('DapBreakpoint', {text='B', texthl='lightred', linehl='', numhl=''})
+      vim.fn.sign_define('DapBreakpointCondition', {text='C', texthl='lightred', linehl='', numhl=''})
 
       -- php
       dap.adapters.php = {

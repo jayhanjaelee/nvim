@@ -43,7 +43,7 @@ return {
             "clangd",
           },
         },
-        highlight = false,
+        highlight = true,
         separator = " > ",
         depth_limit = 0,
         depth_limit_indicator = "..",
@@ -54,6 +54,12 @@ return {
           return text
         end,
       })
+
+      -- fallback highlight issue
+      vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "StatusLineTerm", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "StatusLineTermNC", { bg = "NONE" })
     end
   },
   -- lualine
@@ -92,10 +98,10 @@ return {
             {
               -- nvim-navic
               function()
-                  return navic.get_location()
+                return navic.get_location()
               end,
               cond = function()
-                  return navic.is_available()
+                return navic.is_available()
               end,
             },
           },
