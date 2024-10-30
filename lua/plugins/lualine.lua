@@ -96,7 +96,7 @@ return {
               end,
               cond = function()
                   return navic.is_available()
-              end
+              end,
             },
           },
           lualine_x = {

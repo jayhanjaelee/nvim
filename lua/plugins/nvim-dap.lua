@@ -118,6 +118,7 @@ return {
       })
 
       vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
+      vim.keymap.set("n", "<F9>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", { noremap = true, silent = true })
       vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
       vim.keymap.set("n", "<leader>c", ":lua require'dap'.clear_breakpoints()<cr>", { silent = true })
 
