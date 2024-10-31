@@ -11,6 +11,8 @@ return {
       local dap = require("dap")
       local ui = require("dapui")
 
+      dap.defaults.fallback.exception_breakpoints = {'Exception'}
+
       local phpDapSrc = nil;
       local osname = vim.loop.os_uname().sysname
       if osname == 'Darwin' then
@@ -121,7 +123,7 @@ return {
       vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
       vim.keymap.set("n", "<F9>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", { noremap = true, silent = true })
       vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
-      vim.keymap.set("n", "<leader>c", ":lua require'dap'.clear_breakpoints()<cr>", { silent = true })
+      vim.keymap.set("n", "<leader>c", ":lua require'dap'.clear_breakpoints()<cr>")
 
       -- Eval var under cursor
       vim.keymap.set("n", "<space>?", function()
@@ -144,6 +146,11 @@ return {
       vim.keymap.set("n", "<S-F11>", dap.step_out)
       -- vim.keymap.set("n", "<F5>", dap.step_back)
       vim.keymap.set("n", "<leader>dr", dap.restart)
+
+      -- default setting not working
+      -- require('dap').defaults.fallback.exception_breakpoints = {'Exception'}
+      -- Notice, Warning, Error, Exception, *
+      vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_exception_breakpoints({'Exception'})<cr>")
 
       dap.listeners.before.attach.dapui_config = function()
         ui.open()
