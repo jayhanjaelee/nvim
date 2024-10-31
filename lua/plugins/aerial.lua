@@ -14,7 +14,7 @@ return {
         -- min_width and max_width can be a list of mixed types.
         -- max_width = {40, 0.2} means "the lesser of 40 columns or 20% of total"
         -- max_width = { 40, 0.2 },
-        width = 30,
+        width = 35,
         -- min_width = 20,
 
         -- key-value pairs of window-local options for aerial window (e.g. winhl)
