@@ -132,6 +132,7 @@ return {
 
       local terminateDap = function()
         vim.cmd('DapTerminate')
+        vim.cmd('DapVirtualTextDisable')
         vim.cmd("lua require'dapui'.close()")
       end
 
@@ -156,6 +157,7 @@ return {
         ui.open()
       end
       dap.listeners.before.launch.dapui_config = function()
+        vim.cmd('DapVirtualTextEnable')
         ui.open()
       end
       dap.listeners.before.event_terminated.dapui_config = function()
