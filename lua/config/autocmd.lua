@@ -22,6 +22,9 @@ vim.cmd([[autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 ex
 vim.cmd([[autocmd FileType mustache setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType css setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 
+-- close quickfix window after opening it.
+vim.cmd([[autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>]])
+
 -- large file loading performance
 local function disable_syntax_treesitter()
     print("Big file, disabling syntax, treesitter and folding")
