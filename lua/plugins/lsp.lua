@@ -48,6 +48,7 @@ return {
 					"ts_ls", -- javascript & typescript
 					"intelephense", -- php
           "pylsp", -- python
+          "emmet_ls", -- emmet
 				},
 			})
 		end,
@@ -58,6 +59,8 @@ return {
     config = function()
 			local lspconfig = require("lspconfig")
       local navic = require("nvim-navic")
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
       vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
@@ -110,6 +113,21 @@ return {
 			mapKey("K", vim.lsp.buf.hover)
 			mapKey("gd", vim.lsp.buf.definition)
 			mapKey("<leader>ca", vim.lsp.buf.code_action)
+
+      -- emmet
+      lspconfig.emmet_ls.setup({
+        -- on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "php" },
+        init_options = {
+          html = {
+            options = {
+              -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+              ["bem.enabled"] = true,
+            },
+          },
+        }
+      })
 		end,
 	},
   -- Formatter
