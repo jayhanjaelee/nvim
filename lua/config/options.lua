@@ -31,6 +31,8 @@ opt.listchars = {
     precedes = "<"    -- Character for overflows to the left
 }
 opt.cmdwinheight = 10
+opt.eol = true
+opt.fixeol = true
 
 -- file system
 opt.path:append('**')
