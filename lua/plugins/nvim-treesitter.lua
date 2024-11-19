@@ -7,6 +7,9 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
+        matchup = {
+          enable = true,
+        },
         highlight = {
           enable = true,
           -- disable = function(lang, bufnr)
