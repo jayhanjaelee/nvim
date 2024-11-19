@@ -75,3 +75,24 @@ if vim.fn.executable(clip) == 1 then
         augroup END
     ]], false)
 end
+
+-- LSP signature
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if vim.tbl_contains({ 'null-ls' }, client.name) then  -- blacklist lsp
+      return
+    end
+    require("lsp_signature").on_attach({
+      hint_enable = false, -- virtual hint enable
+      bind = true,
+      doc_lines = 0,
+      max_width = 80,
+      max_height = 12,
+      handler_opts = {
+        border = "rounded"
+      }
+    }, bufnr)
+  end,
+})
