@@ -51,11 +51,12 @@ local function check_file_size()
     end
 end
 
-vim.api.nvim_create_augroup("BigFileDisable", { clear = true })
-vim.api.nvim_create_autocmd({ "BufReadPre", "FileReadPre" }, {
-    group = "BigFileDisable",
-    callback = check_file_size,
-})
+-- Disalbe syntax for huge size file.
+-- vim.api.nvim_create_augroup("BigFileDisable", { clear = true })
+-- vim.api.nvim_create_autocmd({ "BufReadPre", "FileReadPre" }, {
+--     group = "BigFileDisable",
+--     callback = check_file_size,
+-- })
 
 -- use system clipboard by default
 if vim.fn.has('clipboard') == 1 then
