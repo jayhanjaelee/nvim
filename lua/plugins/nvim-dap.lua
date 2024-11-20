@@ -149,6 +149,7 @@ return {
       vim.keymap.set("n", "<leader>dr", dap.restart)
 
       -- default setting not working
+      require('dap').defaults.fallback.exception_breakpoints = {}
       -- require('dap').defaults.fallback.exception_breakpoints = {'Exception'}
       -- Notice, Warning, Error, Exception, *
       vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_exception_breakpoints({'Exception'})<cr>")
