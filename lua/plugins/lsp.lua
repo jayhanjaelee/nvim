@@ -139,15 +139,15 @@ return {
 			"nvimtools/none-ls.nvim",
 		},
     config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = {
-          'stylua',
-          'black',
-          'php-cs-fixer'
-        },
-        automatic_installation = false,
-        handlers = {},
-      })
+      -- require("mason-null-ls").setup({
+      --   ensure_installed = {
+      --     'stylua',
+      --     'black',
+      --     'php-cs-fixer'
+      --   },
+      --   automatic_installation = false,
+      --   handlers = {},
+      -- })
     end,
 	},
 }
