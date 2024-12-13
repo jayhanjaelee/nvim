@@ -21,6 +21,7 @@ vim.cmd([[autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabsto
 vim.cmd([[autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType mustache setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType css setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
+vim.cmd([[autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 
 -- close quickfix window after opening it.
 vim.cmd([[autocmd FileType qf nnoremap <silent> <buffer> <CR> <CR>:cclose<CR>]])

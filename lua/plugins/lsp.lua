@@ -49,10 +49,22 @@ return {
 					"intelephense", -- php
           "pylsp", -- python
           "emmet_ls", -- emmet
+          "rust_analyzer", --rust
 				},
 			})
 		end,
 	},
+  -- DAP
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    config = function() 
+      require("mason-nvim-dap").setup({
+        ensure_installed = {
+          "codelldb"
+        }
+      })
+    end,
+  },
   -- LSPconfig
 	{
 		"neovim/nvim-lspconfig",
