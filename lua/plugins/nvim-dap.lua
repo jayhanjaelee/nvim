@@ -53,7 +53,7 @@ return {
         --   program = "${file}",
         --   runtimeExecutable = "php",
         -- },
-      }
+    }
 
       require("dapui").setup({
         layouts = {
