@@ -47,3 +47,6 @@ opt.mouse = ""
 
 -- tabby
 opt.sessionoptions="buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
+
+-- file
+opt.fixendofline = false
