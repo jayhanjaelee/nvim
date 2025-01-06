@@ -28,6 +28,7 @@ return {
           "vimdoc",
           "query",
           "javascript",
+          "typescript",
           "html",
           "css",
           "asm",

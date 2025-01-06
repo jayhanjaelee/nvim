@@ -19,7 +19,7 @@ return {
         -- unix
         phpDapSrc = os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js"
       elseif string.find(osname, "Windows") then
-      -- windows
+        -- windows
         phpDapSrc = os.getenv("USERPROFILE") .. "/vscode-php-debug/out/phpDebug.js"
       end
 
@@ -53,7 +53,7 @@ return {
         --   program = "${file}",
         --   runtimeExecutable = "php",
         -- },
-    }
+      }
 
       require("dapui").setup({
         layouts = {
@@ -169,4 +169,74 @@ return {
       end
     end,
   },
+  -- typescript
+  {
+    "mxsdev/nvim-dap-vscode-js",
+    config = function()
+      -- setup adapters
+      require('dap-vscode-js').setup({
+        debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
+        debugger_cmd = { 'js-debug-adapter' },
+        adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+        node_path = 'node'
+      })
+
+      local dap = require('dap')
+
+      -- custom adapter for running tasks before starting debug
+      local custom_adapter = 'pwa-node-custom'
+      dap.adapters[custom_adapter] = function(cb, config)
+        if config.preLaunchTask then
+          local async = require('plenary.async')
+          local notify = require('notify').async
+
+          async.run(function()
+            ---@diagnostic disable-next-line: missing-parameter
+            notify('Running [' .. config.preLaunchTask .. ']').events.close()
+          end, function()
+              vim.fn.system(config.preLaunchTask)
+              config.type = 'pwa-node'
+              dap.run(config)
+            end)
+        end
+      end
+
+      -- language config
+      for _, language in ipairs({ 'typescript', 'javascript' }) do
+        dap.configurations[language] = {
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug TypeScript",
+            program = "${workspaceFolder}/path/to/your/ts-file.ts",
+            runtimeExecutable = "node",
+            runtimeArgs = { "-r", "ts-node/register" },
+            outFiles = { "${workspaceFolder}/path/to/your/ts-file.js" },
+            sourceMaps = true,
+            stopOnEntry = false,
+            args = {},
+            cwd = "${workspaceFolder}",
+            protocol = "inspector",
+            console = "integratedTerminal",
+            internalConsoleOptions = "openOnSessionStart"
+          },
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Launch file",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+            sourceMaps = true,
+            skipFiles = { "<node_internals>/**", "node_modules/**" },
+          },
+          {
+            type = "pwa-node",
+            request = "attach",
+            name = "Attach",
+            processId = require 'dap.utils'.pick_process,
+            cwd = "${workspaceFolder}",
+          } }
+      end
+    end
+  }
 }
