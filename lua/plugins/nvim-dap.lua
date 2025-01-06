@@ -205,37 +205,33 @@ return {
       for _, language in ipairs({ 'typescript', 'javascript' }) do
         dap.configurations[language] = {
           {
-            type = "pwa-node",
-            request = "launch",
-            name = "Debug TypeScript",
-            program = "${workspaceFolder}/path/to/your/ts-file.ts",
-            runtimeExecutable = "node",
-            runtimeArgs = { "-r", "ts-node/register" },
-            outFiles = { "${workspaceFolder}/path/to/your/ts-file.js" },
+            type = 'pwa-node',
+            request = 'launch',
+            name = 'Launch Current File (pwa-node)',
+            cwd = "${workspaceFolder}", -- vim.fn.getcwd(),
+            args = { '${file}' },
             sourceMaps = true,
-            stopOnEntry = false,
-            args = {},
-            cwd = "${workspaceFolder}",
-            protocol = "inspector",
-            console = "integratedTerminal",
-            internalConsoleOptions = "openOnSessionStart"
+            protocol = 'inspector'
           },
           {
-            type = "pwa-node",
-            request = "launch",
-            name = "Launch file",
+            type = 'pwa-node',
+            request = 'launch',
+            name = 'Launch Current File (Typescript)',
+            cwd = "${workspaceFolder}",
+            runtimeArgs = { '--loader=ts-node/esm' },
             program = "${file}",
-            cwd = "${workspaceFolder}",
+            runtimeExecutable = 'node',
+            -- args = { '${file}' },
             sourceMaps = true,
-            skipFiles = { "<node_internals>/**", "node_modules/**" },
-          },
-          {
-            type = "pwa-node",
-            request = "attach",
-            name = "Attach",
-            processId = require 'dap.utils'.pick_process,
-            cwd = "${workspaceFolder}",
-          } }
+            protocol = 'inspector',
+            outFiles = { "${workspaceFolder}/**/**/*", "!**/node_modules/**" },
+            skipFiles = { '<node_internals>/**', 'node_modules/**' },
+            resolveSourceMapLocations = {
+              "${workspaceFolder}/**",
+              "!**/node_modules/**",
+            }
+          }
+        }
       end
     end
   }
