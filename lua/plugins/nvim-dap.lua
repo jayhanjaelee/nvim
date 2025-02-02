@@ -141,10 +141,15 @@ return {
       vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true })
       vim.keymap.set("n", "<leader>de", ":lua require'dapui'.elements.watches.add(vim.fn.expand('<cexpr>'))<cr>", { silent = true })
       vim.keymap.set("n", "<F5>", dap.continue)
-      vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true })
+      if osname == 'Darwin' then
+        vim.keymap.set("n", "<leader><F5>", terminateDap, { silent = true })
+        vim.keymap.set("n", "<leader><F11>", dap.step_out)
+      elseif string.find(osname, "Windows") then
+        vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true })
+        vim.keymap.set("n", "<S-F11>", dap.step_out)
+      end
       vim.keymap.set("n", "<F10>", dap.step_over)
       vim.keymap.set("n", "<F11>", dap.step_into)
-      vim.keymap.set("n", "<S-F11>", dap.step_out)
       -- vim.keymap.set("n", "<F5>", dap.step_back)
       vim.keymap.set("n", "<leader>dr", dap.restart)
 
