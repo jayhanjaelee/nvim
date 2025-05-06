@@ -137,6 +137,9 @@ return {
             'node_modules',
             'vendor/*',
             '.*min.js',
+            '%.o$',
+            '%.d$',
+            '^bin/'
             -- '.*.log'
           },
         },
