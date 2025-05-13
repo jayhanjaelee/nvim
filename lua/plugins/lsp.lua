@@ -50,6 +50,7 @@ return {
           "pylsp", -- python
           "emmet_ls", -- emmet
           "rust_analyzer", --rust
+          "cssls" -- css
 				},
 			})
 		end,
@@ -88,6 +89,9 @@ return {
           }
         }
       })
+
+      -- cssls
+      lspconfig.cssls.setup({});
 
       -- js & ts
 			lspconfig.ts_ls.setup({})
