@@ -37,7 +37,8 @@ return {
           "rust",
           "sql",
           "make",
-          "java"
+          "java",
+          "tsx"
         },
         sync_install = false,
         indent = { enable = true },

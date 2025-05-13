@@ -10,7 +10,7 @@ return {
       },
       aliases = {
         ["mustache"] = "html",
-      },
+      }
     })
   end
 }

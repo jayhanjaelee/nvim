@@ -17,10 +17,13 @@ vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=o]])
 -- indent for file type
 vim.cmd([[autocmd FileType php setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType php setlocal iskeyword+=$]])
-vim.cmd([[autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType mustache setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
-vim.cmd([[autocmd FileType css setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
+vim.cmd([[autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent]])
+vim.cmd([[autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent]])
+vim.cmd([[autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent]])
+vim.cmd([[autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent]])
+vim.cmd([[autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent]])
 vim.cmd([[autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 
 -- close quickfix window after opening it.
