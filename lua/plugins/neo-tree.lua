@@ -119,7 +119,7 @@ return {
         },
         name = {
           trailing_slash = false,
-          use_git_status_colors = true,
+          use_git_status_colors = false,
           highlight = "NeoTreeFileName",
         },
         git_status = {

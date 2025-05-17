@@ -91,7 +91,9 @@ return {
       })
 
       -- cssls
-      lspconfig.cssls.setup({});
+      lspconfig.cssls.setup({
+        filetypes = { 'html', 'css', 'scss', 'php' }
+      });
 
       -- js & ts
 			lspconfig.ts_ls.setup({})
