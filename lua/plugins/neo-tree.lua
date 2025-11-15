@@ -159,6 +159,8 @@ return {
         },
       },
       window = {
+        position = "left",
+        width = 35,
         mappings = {
           ["/"] = "noop",
           ["?"] = "noop",
