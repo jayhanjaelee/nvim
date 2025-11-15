@@ -112,18 +112,8 @@ return {
         }
       })
 
-      -- Add additional capabilities supported by nvim-cmp
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require('lspconfig')
-
-      -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-      for _, ls in ipairs(language_servers) do
-        lspconfig[ls].setup {
-          -- on_attach = my_custom_on_attach,
-          capabilities = capabilities,
-        }
-      end
+      -- NOTE: LSP servers are configured in lua/plugins/lsp.lua
+      -- The cmp capabilities are automatically available to LSP servers
     end,
   },
 }

@@ -92,7 +92,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       bind = true, -- mandatory
       doc_lines = 80,
       max_width = 100, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-      max_height = 100,
       hint_enable = false,
       handler_opts = {
         border = "single"

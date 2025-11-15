@@ -71,16 +71,43 @@ return {
 	{
 		"neovim/nvim-lspconfig",
     config = function()
-			local lspconfig = require("lspconfig")
       local navic = require("nvim-navic")
+
+      -- Setup capabilities with completion and folding support
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      -- Add nvim-cmp capabilities if available
+      local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+      if has_cmp then
+        capabilities = vim.tbl_deep_extend('force', capabilities, cmp_nvim_lsp.default_capabilities())
+      end
+
+      -- Add folding capabilities for nvim-ufo
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
 
       vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
       vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
 
+      -- Helper function to find root directory
+      local function find_root(patterns)
+        return function(filename)
+          local cwd = vim.uv.cwd()
+          local root = vim.fs.root(filename, patterns)
+          -- prefer cwd if root is a descendant
+          if root and cwd and vim.startswith(vim.fs.normalize(cwd), vim.fs.normalize(root)) then
+            return cwd
+          end
+          return root or cwd
+        end
+      end
+
       -- lua
-			lspconfig.lua_ls.setup({
+      vim.lsp.config('lua_ls', {
+        capabilities = capabilities,
         settings = {
           Lua = {
             diagnostics = {
@@ -91,33 +118,37 @@ return {
       })
 
       -- cssls
-      lspconfig.cssls.setup({
+      vim.lsp.config('cssls', {
+        capabilities = capabilities,
         filetypes = { 'html', 'css', 'scss', 'php' }
-      });
+      })
 
       -- js & ts
-			lspconfig.ts_ls.setup({})
+      vim.lsp.config('ts_ls', {
+        capabilities = capabilities,
+      })
+
       -- c
-			lspconfig.clangd.setup({})
+      vim.lsp.config('clangd', {
+        capabilities = capabilities,
+      })
+
       -- php
-      lspconfig.intelephense.setup({
+      vim.lsp.config('intelephense', {
+        capabilities = capabilities,
         cmd = { 'intelephense', '--stdio' },
         filetypes = { 'php' },
-        root_dir = function(pattern)
-          local cwd = vim.uv.cwd()
-          local root = lspconfig.util.root_pattern('composer.json', '.git', '.svn')(pattern)
-
-          -- prefer cwd if root is a descendant
-          return lspconfig.util.path.is_descendant(cwd, root) and cwd or root
-        end,
+        root_dir = find_root({'composer.json', '.git', '.svn'}),
         on_attach = function(client, bufnr)
           if client.server_capabilities.documentSymbolProvider then
             navic.attach(client, bufnr)
           end
         end,
       })
+
       -- assembly
-      lspconfig.asm_lsp.setup{
+      vim.lsp.config('asm_lsp', {
+        capabilities = capabilities,
         cmd = {"asm-lsp"},
         filetypes = {"asm","vmasm","s"},
         opts = {
@@ -125,16 +156,15 @@ return {
           diagnostics = false,
           default_diagnostics = false
         }
-      }
-      -- python
-      lspconfig.pylsp.setup{}
+      })
 
-			mapKey("K", vim.lsp.buf.hover)
-			mapKey("gd", vim.lsp.buf.definition)
-			mapKey("<leader>ca", vim.lsp.buf.code_action)
+      -- python
+      vim.lsp.config('pylsp', {
+        capabilities = capabilities,
+      })
 
       -- emmet
-      lspconfig.emmet_ls.setup({
+      vim.lsp.config('emmet_ls', {
         -- on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
@@ -147,6 +177,13 @@ return {
           },
         }
       })
+
+      -- Enable all configured LSP servers
+      vim.lsp.enable({'lua_ls', 'cssls', 'ts_ls', 'clangd', 'intelephense', 'asm_lsp', 'pylsp', 'emmet_ls'})
+
+			mapKey("K", vim.lsp.buf.hover)
+			mapKey("gd", vim.lsp.buf.definition)
+			mapKey("<leader>ca", vim.lsp.buf.code_action)
 		end,
 	},
   -- Formatter

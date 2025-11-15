@@ -1,9 +1,9 @@
 return {
   "ray-x/lsp_signature.nvim",
-  event = "InsertEnter",
+  event = "VeryLazy",
   opts = {},
-  config = function(_, opts) require'lsp_signature'.setup({
-    doc_lines = 99,
-    max_width = 99,
-  }) end
+  config = function(_, opts)
+    -- Configuration is done via LspAttach autocmd in lua/config/autocmd.lua
+    -- to ensure it's properly attached to each LSP client
+  end
 }
