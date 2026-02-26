@@ -35,9 +35,9 @@ return {
       local codelldb_path = vim.fn.stdpath("data") .. "/mason/bin/codelldb"
 
       if vim.fn.executable(codelldb_path) == 1 then
-        print("Found: " .. codelldb_path)
+        -- print("Found: " .. codelldb_path)
       else
-        print("codelldb not found or not executable")
+        -- print("codelldb not found or not executable")
       end
 
       local dap = require('dap')

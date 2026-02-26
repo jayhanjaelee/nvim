@@ -41,7 +41,14 @@ return {
         undercurl = false,   -- use undercurl instead of underline for diagnostics
         background = false,    -- use background color for virtual text
       },
+
+      -- optional function to modify or add colors to the palette
+      -- palette definitions are in lua/tairiki/palette
+      colors = function(colors, opts) end,
+      -- optional function to override highlight groups
+      highlights = function(groups, colors, opts) end,
     }
+
     -- Lua
     require('tairiki').load()
   end
