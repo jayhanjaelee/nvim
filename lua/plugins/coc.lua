@@ -26,5 +26,8 @@ return {
       end
     end
     keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+
+    -- Symbol renaming
+    keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
   end,
 }
