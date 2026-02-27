@@ -1,6 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "aerial.nvim": { "branch": "master", "commit": "645d108a5242ec7b378cbe643eb6d04d4223f034" },
+  "auto-session": { "branch": "main", "commit": "62437532b38495551410b3f377bcf4aaac574ebe" },
   "coc.nvim": { "branch": "release", "commit": "f36328bb5c75c2272872e6f236cbb6f4f85262af" },
   "conform.nvim": { "branch": "master", "commit": "e969e302bced7ffb9a0a0323629f31feb0ca35a6" },
   "indentmini.nvim": { "branch": "main", "commit": "38572ce5a7a064a5deb89d6d861b7c40fc929ab1" },

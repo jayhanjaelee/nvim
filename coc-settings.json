@@ -1,4 +1,5 @@
 {
   "inlayHint.enable": false,
-  "codeLens.enable": true
+  "codeLens.enable": true,
+  "list.maxPreviewHeight": 20
 }

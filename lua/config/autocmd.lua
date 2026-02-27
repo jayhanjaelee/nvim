@@ -31,31 +31,34 @@ vim.cmd([[autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4 exp
 -- close quickfix window after opening it.
 vim.cmd([[autocmd FileType qf nnoremap <silent> <buffer> <CR> <CR>:cclose<CR>]])
 
+-- set quickfix window height to 20 lines
+vim.cmd([[autocmd FileType qf resize 20]])
+
 -- large file loading performance
-local function disable_syntax_treesitter()
-    print("Big file, disabling syntax, treesitter and folding")
-    if vim.fn.exists(':TSBufDisable') == 2 then
-        vim.cmd('TSBufDisable autotag')
-        vim.cmd('TSBufDisable highlight')
-        -- add more treesitter-related disables here if needed
-    end
-
-    vim.o.foldmethod = 'manual'
-    vim.cmd('syntax clear')
-    vim.cmd('syntax off')  -- 'syntax off' should be used to turn off syntax highlighting
-    vim.cmd('filetype off')
-    vim.o.undofile = false
-    vim.o.swapfile = false
-    vim.o.loadplugins = false
-end
-
-local function check_file_size()
-    local max_size = 512 * 1024 -- 512 KB
-    local file = vim.fn.expand("%")
-    if vim.fn.getfsize(file) > max_size then
-        disable_syntax_treesitter()
-    end
-end
+-- local function disable_syntax_treesitter()
+--     print("Big file, disabling syntax, treesitter and folding")
+--     if vim.fn.exists(':TSBufDisable') == 2 then
+--         vim.cmd('TSBufDisable autotag')
+--         vim.cmd('TSBufDisable highlight')
+--         -- add more treesitter-related disables here if needed
+--     end
+--
+--     vim.o.foldmethod = 'manual'
+--     vim.cmd('syntax clear')
+--     vim.cmd('syntax off')  -- 'syntax off' should be used to turn off syntax highlighting
+--     vim.cmd('filetype off')
+--     vim.o.undofile = false
+--     vim.o.swapfile = false
+--     vim.o.loadplugins = false
+-- end
+--
+-- local function check_file_size()
+--     local max_size = 512 * 1024 -- 512 KB
+--     local file = vim.fn.expand("%")
+--     if vim.fn.getfsize(file) > max_size then
+--         disable_syntax_treesitter()
+--     end
+-- end
 
 -- Disalbe syntax for huge size file.
 -- vim.api.nvim_create_augroup("BigFileDisable", { clear = true })
@@ -83,21 +86,21 @@ if vim.fn.executable(clip) == 1 then
 end
 
 -- LSP signature
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local bufnr = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if vim.tbl_contains({ 'null-ls' }, client.name) then  -- blacklist lsp
-      return
-    end
-    require("lsp_signature").on_attach({
-      bind = true, -- mandatory
-      doc_lines = 80,
-      max_width = 100, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-      hint_enable = false,
-      handler_opts = {
-        border = "single"
-      },
-    }, bufnr)
-  end,
-})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(args)
+--     local bufnr = args.buf
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--     if vim.tbl_contains({ 'null-ls' }, client.name) then  -- blacklist lsp
+--       return
+--     end
+--     require("lsp_signature").on_attach({
+--       bind = true, -- mandatory
+--       doc_lines = 80,
+--       max_width = 100, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+--       hint_enable = false,
+--       handler_opts = {
+--         border = "single"
+--       },
+--     }, bufnr)
+--   end,
+-- })

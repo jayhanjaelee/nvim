@@ -2,10 +2,6 @@ return {
   'neoclide/coc.nvim', branch = 'release', 
   config = function()
     local keyset = vim.keymap.set
-    -- Use `[g` and `]g` to navigate diagnostics
-    -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-    keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
-    keyset("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
 
     -- GoTo code navigation
     keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
@@ -13,6 +9,28 @@ return {
     keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
     keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
 
+    -- Remap <C-f> and <C-b> to scroll float windows/popups
+    ---@diagnostic disable-next-line: redefined-local
+    local opts = {silent = true, nowait = true, expr = true}
+    keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
+    keyset("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
+    keyset("i", "<C-f>",
+      'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
+    keyset("i", "<C-b>",
+      'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
+    keyset("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
+    keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
+
+    -- Mappings for CoCList
+    -- code actions and coc stuff
+    ---@diagnostic disable-next-line: redefined-local
+    local opts = {silent = true, nowait = true}
+    -- Show all diagnostics
+    keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+    -- Use `[g` and `]g` to navigate diagnostics
+    -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+    keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
+    keyset("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
 
     -- Use K to show documentation in preview window
     function _G.show_docs()
