@@ -1,3 +1,4 @@
 {
   "inlayHint.enable": false,
+  "codeLens.enable": true
 }
