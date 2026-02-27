@@ -36,7 +36,7 @@ return {
             '.*min.js',
             '%.o$',
             '%.d$',
-            '^bin/'
+            '^bin/',
             '*.log'
           },
           mappings = {
