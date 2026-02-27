@@ -1,5 +1,23 @@
 return {
-  'neoclide/coc.nvim', branch = 'release', 
+  'neoclide/coc.nvim', branch = 'release',
+  build = vim.fn['coc#util#install'],
+  init = function()
+    vim.g.coc_global_extensions = {
+      'coc-clangd',
+      'coc-json',
+      'coc-tsserver',
+      'coc-html',
+      'coc-css',
+      'coc-yaml',
+      '@yaegassy/coc-intelephense',
+      'coc-java',
+      'coc-docker',
+      'coc-go',
+      'coc-pyright',
+      'coc-solargraph',
+      'coc-rust-analyzer'
+    }
+  end,
   config = function()
     local keyset = vim.keymap.set
 
