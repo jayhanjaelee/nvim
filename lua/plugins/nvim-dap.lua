@@ -11,7 +11,8 @@ return {
       local dap = require("dap")
       local ui = require("dapui")
 
-      dap.defaults.fallback.exception_breakpoints = {'Exception'}
+      -- uncaught, raised (available lists)
+      dap.defaults.fallback.exception_breakpoints = {'uncaught'};
 
       local phpDapSrc = nil;
       local osname = vim.loop.os_uname().sysname
@@ -25,8 +26,10 @@ return {
 
       -- change symbol color for breakpoint
       vim.api.nvim_set_hl(0, 'lightred', { fg = '#cc6666', bg = 'NONE' })
-      vim.fn.sign_define('DapBreakpoint', {text='B', texthl='lightred', linehl='', numhl=''})
-      vim.fn.sign_define('DapBreakpointCondition', {text='C', texthl='lightred', linehl='', numhl=''})
+      vim.api.nvim_set_hl(0, "DapCurrentLine", { link = "CursorLine" })
+      vim.fn.sign_define('DapBreakpoint', {text='B', texthl='lightred', linehl='', numhl=''}) -- break point sign
+      vim.fn.sign_define('DapBreakpointCondition', {text='C', texthl='lightred', linehl='', numhl=''}) -- condition sign
+      vim.fn.sign_define('DapStopped', {text='→', texthl='DiagnosticWarn', linehl='DapCurrentLine', numhl='DapCurrentLine'}) -- paused
 
       -- lldb
 
