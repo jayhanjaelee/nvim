@@ -38,6 +38,11 @@ opt.fixeol = true
 opt.path:append('**')
 -- opt.autochdir = true
 
+-- wildmenu
+opt.wildmenu = true
+opt.wildoptions = "pum"
+opt.pumheight = 15
+
 -- etc
 opt.encoding = "UTF-8"
 opt.fileencoding="UTF-8"
@@ -51,3 +56,6 @@ opt.sessionoptions="buffers,curdir,folds,tabpages,winsize,winpos,terminal,localo
 
 -- file
 opt.fixendofline = false
+
+-- mouse
+opt.mouse = a
