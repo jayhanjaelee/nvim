@@ -93,6 +93,19 @@ return {
     fuzzy = {
       implementation = 'prefer_rust_with_warning',
     },
+
+    cmdline = {
+      completion = {
+        menu = {
+          draw = {
+            columns = {
+              { "label" },
+            },
+          },
+        },
+      },
+    },
+
   },
 
   opts_extend = { 'sources.default' },
