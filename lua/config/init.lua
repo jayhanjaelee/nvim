@@ -26,3 +26,4 @@ local opts = {}
 -- Setup lazy.nvim
 require("lazy").setup(plugins, opts)
 
+require("config.lsp")

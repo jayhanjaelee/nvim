@@ -92,12 +92,14 @@ return {
             },
             {
               -- nvim-navic
+              --[[
               function()
                 return navic.get_location()
               end,
               cond = function()
                 return navic.is_available()
               end,
+              ]]--
             },
           },
           lualine_x = {
