@@ -41,4 +41,8 @@ mapKey('<Esc>', '<C-\\><C-n>', 't')
 
 -- file
 mapKey('<C-g>', '1<C-g>')
+mapKey('<leader>r', ':luafile ~/.config/nvim/init.lua<cr>')
 -- mapKey('<leader>r', ':browse oldfiles!<cr>')
+
+-- LSP things
+-- mapKey('<leader>ca', vim.lsp.buf.code_action)
