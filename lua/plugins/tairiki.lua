@@ -16,14 +16,17 @@ return {
       toggle_style_list = {'dark'}, -- List of styles to toggle between TODO
 
       -- Change code style ---
-      -- Options are italic, bold, underline, none
-      -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
+      -- see :help nvim_set_hl() for available keys
+      -- use empty table {} to disable all styles
       code_style = {
-        comments = 'none',
-        keywords = 'none',
-        functions = 'none',
-        strings = 'none',
-        variables = 'none'
+        comments = { italic = false },
+        conditionals = {},
+        keywords = {},
+        functions = {},
+        strings = {},
+        variables = {},
+        parameters = {},
+        types = {},
       },
 
       -- Lualine options --
