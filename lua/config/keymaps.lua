@@ -33,8 +33,11 @@ mapKey('<leader>l', ':ls<cr>')
 mapKey('<leader>t', ':tabnew %<cr>')
 mapKey('<leader>w', ':tabclose<cr>')
 
--- zoom
+-- zoom (using plugin, so comment it)
 -- mapKey('<C-w>z', '<C-w>_<C-w>|');
+
+-- terminal mode
+mapKey('<Esc>', '<C-\\><C-n>', 't')
 
 -- file
 mapKey('<C-g>', '1<C-g>')

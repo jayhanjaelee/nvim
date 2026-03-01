@@ -15,7 +15,8 @@ return {
       'coc-go',
       'coc-pyright',
       'coc-solargraph',
-      'coc-rust-analyzer'
+      'coc-rust-analyzer',
+      'coc-lua'
     }
   end,
   config = function()
