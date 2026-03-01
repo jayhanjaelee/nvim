@@ -23,11 +23,11 @@ mapKey('<', '<gv', 'v')
 mapKey('>', '>gv', 'v')
 
 -- buffer
-mapKey('<C-p>', ':bp<cr>')
-mapKey('<C-n>', ':bn<cr>')
-mapKey('<leader>dd', ':bd<cr>')
-mapKey('<leader><S-d>', ':%bd|e#|bd#<cr>') -- delete other buffers
-mapKey('<leader>l', ':ls<cr>')
+-- mapKey('<C-p>', ':bp<cr>')
+-- mapKey('<C-n>', ':bn<cr>')
+-- mapKey('<leader>dd', ':bd<cr>')
+-- mapKey('<leader><S-d>', ':%bd|e#|bd#<cr>') -- delete other buffers
+-- mapKey('<leader>l', ':ls<cr>')
 
 -- tabpage
 mapKey('<leader>t', ':tabnew %<cr>')
