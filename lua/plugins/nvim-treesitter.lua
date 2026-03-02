@@ -38,7 +38,14 @@ return {
           "sql",
           "make",
           "java",
-          "tsx"
+          "tsx",
+          "json",
+          "xml",
+          "go",
+          "cmake",
+          "make",
+          "dockerfile",
+          "http"
         },
         sync_install = false,
         indent = { enable = true },
