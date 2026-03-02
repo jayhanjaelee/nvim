@@ -65,9 +65,9 @@ return {
   {
     'Wansmer/treesj',
     keys = {
-      { '<space>m', desc = "Toggle split/join" },
-      -- { '<space>j', desc = "Join code block" },
-      -- { '<space>s', desc = "Split code block" },
+      { '<leader>m', desc = "Toggle split/join" },
+      -- { '<leader>j', desc = "Join code block" },
+      -- { '<leader>s', desc = "Split code block" },
     },
     dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
     config = function()

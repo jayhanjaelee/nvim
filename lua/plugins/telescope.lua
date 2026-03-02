@@ -118,15 +118,11 @@ return {
         }))
       end, 'n', { desc = "LSP references" })
 
-      mapKey('<leader>m', function()
-        builtin.diagnostics(themes.get_ivy(
-          { bufnr = 0, layout_config = { height = 0.5 } }
-        ))
-      end, 'n', { desc = "Buffer diagnostics" })
-      
-      -- mapKey('gr', function()
-      --   builtin.lsp_references(themes.get_ivy({}))
-      -- end)
+      -- mapKey('<leader>m', function()
+      --   builtin.diagnostics(themes.get_ivy(
+      --     { bufnr = 0, layout_config = { height = 0.5 } }
+      --   ))
+      -- end, 'n', { desc = "Buffer diagnostics" })
       -- mapKey('<leader>ff', builtin.find_files)
       -- mapKey('<leader>fg', builtin.live_grep)
       -- mapKey('<leader>fb', builtin.buffers)
