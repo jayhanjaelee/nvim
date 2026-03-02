@@ -17,6 +17,10 @@ return {
       -- <C-n>/<C-p> 또는 <Up>/<Down>: 이전/다음 항목
       -- <C-b>/<C-f>: 문서 스크롤
       -- <Tab>/<S-Tab>: 스니펫 점프
+
+      -- Tab으로 자동완성 선택
+      ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
+      ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
     },
 
     appearance = {
