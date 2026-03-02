@@ -11,7 +11,7 @@ return {
         -- jump_map = "<C-e>"       -- (DROPPED SUPPORT, see [here](#cycle-between-annotations) !) The keymap in order to jump in the annotation fields (in insert mode)
       }
 
-      local opts = { noremap = true, silent = true }
+      local opts = { noremap = true, silent = true, desc = "Generate documentation" }
       vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
 
     end,

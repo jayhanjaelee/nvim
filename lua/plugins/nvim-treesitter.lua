@@ -59,12 +59,16 @@ return {
     config = function()
       vim.keymap.set("n", "[c", function()
         require("treesitter-context").go_to_context(vim.v.count1)
-      end, { silent = true })
+      end, { silent = true, desc = "Jump to context" })
     end
   },
   {
     'Wansmer/treesj',
-    keys = { '<space>m', '<space>j', '<space>s' },
+    keys = {
+      { '<space>m', desc = "Toggle split/join" },
+      -- { '<space>j', desc = "Join code block" },
+      -- { '<space>s', desc = "Split code block" },
+    },
     dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
     config = function()
       require('treesj').setup({--[[ your config ]]})

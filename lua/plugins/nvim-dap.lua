@@ -172,15 +172,15 @@ return {
         -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
       })
 
-      vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
-      vim.keymap.set("n", "<leader>dc", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", { noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>gb", dap.run_to_cursor)
-      vim.keymap.set("n", "<leader>c", ":lua require'dap'.clear_breakpoints()<cr>")
+      vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
+      vim.keymap.set("n", "<leader>dc", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", { noremap = true, silent = true, desc = "Set conditional breakpoint" })
+      vim.keymap.set("n", "<leader>gb", dap.run_to_cursor, { desc = "Run to cursor" })
+      vim.keymap.set("n", "<leader>c", ":lua require'dap'.clear_breakpoints()<cr>", { desc = "Clear all breakpoints" })
 
       -- Eval var under cursor
       vim.keymap.set("n", "<space>?", function()
         require("dapui").eval(nil, { enter = true })
-      end)
+      end, { desc = "Evaluate expression under cursor" })
 
       local terminateDap = function()
         vim.cmd('DapTerminate')
@@ -190,28 +190,28 @@ return {
 
       -- vim.keymap.set("n", "<leader>do", ":lua require'dapui'.open()<cr>", { silent = true })
       -- vim.keymap.set("n", "<leader>dc", ":lua require'dapui'.close()<cr>", { silent = true })
-      vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true })
-      vim.keymap.set("n", "<leader>de", ":lua require'dapui'.elements.watches.add(vim.fn.expand('<cexpr>'))<cr>", { silent = true })
-      vim.keymap.set("n", "<F5>", dap.continue)
+      vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true, desc = "Toggle DAP UI" })
+      vim.keymap.set("n", "<leader>de", ":lua require'dapui'.elements.watches.add(vim.fn.expand('<cexpr>'))<cr>", { silent = true, desc = "Add to watches" })
+      vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue/Start debugging" })
       if osname == 'Darwin' then
-        vim.keymap.set("n", "<leader><F5>", terminateDap, { silent = true })
-        vim.keymap.set("n", "<leader>ss", dap.step_over)
-        vim.keymap.set("n", "<leader>si", dap.step_into)
-        vim.keymap.set("n", "<leader>so", dap.step_out)
+        vim.keymap.set("n", "<leader><F5>", terminateDap, { silent = true, desc = "Terminate debugging" })
+        vim.keymap.set("n", "<leader>ss", dap.step_over, { desc = "Step over" })
+        vim.keymap.set("n", "<leader>si", dap.step_into, { desc = "Step into" })
+        vim.keymap.set("n", "<leader>so", dap.step_out, { desc = "Step out" })
       elseif string.find(osname, "Windows") then
-        vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true })
-        vim.keymap.set("n", "<S-F11>", dap.step_out)
-        vim.keymap.set("n", "<F10>", dap.step_over)
-        vim.keymap.set("n", "<F11>", dap.step_into)
+        vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true, desc = "Terminate debugging" })
+        vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = "Step out" })
+        vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
+        vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
       end
       -- vim.keymap.set("n", "<F5>", dap.step_back)
-      vim.keymap.set("n", "<leader>dr", dap.restart)
+      vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "Restart debugging" })
 
       -- default setting not working
       require('dap').defaults.fallback.exception_breakpoints = {}
       -- require('dap').defaults.fallback.exception_breakpoints = {'Exception'}
       -- Notice, Warning, Error, Exception, *
-      vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_exception_breakpoints({'Exception'})<cr>")
+      vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_exception_breakpoints({'Exception'})<cr>", { desc = "Set exception breakpoint" })
 
       dap.listeners.before.attach.dapui_config = function()
         ui.open()

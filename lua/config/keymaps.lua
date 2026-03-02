@@ -1,26 +1,26 @@
 local mapKey = require("utils.keyMapper").mapKey
 
 -- Neotree toggle
-mapKey('<leader>e', ':Neotree toggle<CR>')
+mapKey('<leader>e', ':Neotree toggle<CR>', 'n', { desc = "Toggle Neotree" })
 
 -- pane navigation
-mapKey('<C-h>', '<C-w>h') -- Left
-mapKey('<C-j>', '<C-w>j') -- Down
-mapKey('<C-k>', '<C-w>k') -- Up
-mapKey('<C-l>', '<C-w>l') -- Right
+mapKey('<C-h>', '<C-w>h', 'n', { desc = "Navigate to left pane" }) -- Left
+mapKey('<C-j>', '<C-w>j', 'n', { desc = "Navigate to down pane" }) -- Down
+mapKey('<C-k>', '<C-w>k', 'n', { desc = "Navigate to up pane" }) -- Up
+mapKey('<C-l>', '<C-w>l', 'n', { desc = "Navigate to right pane" }) -- Right
 
 -- pane resize
-mapKey("<M-h>", ":vertical resize -2<cr>")
-mapKey("<M-l>", ":vertical resize +2<cr>")
-mapKey("<M-j>", ":horizontal resize -2<cr>")
-mapKey("<M-k>", ":horizontal resize +2<cr>")
+mapKey("<M-h>", ":vertical resize -2<cr>", 'n', { desc = "Decrease window width" })
+mapKey("<M-l>", ":vertical resize +2<cr>", 'n', { desc = "Increase window width" })
+mapKey("<M-j>", ":horizontal resize -2<cr>", 'n', { desc = "Decrease window height" })
+mapKey("<M-k>", ":horizontal resize +2<cr>", 'n', { desc = "Increase window height" })
 
 -- clear search hl
-mapKey('<leader>h', ':nohlsearch<CR>')
+mapKey('<leader>h', ':nohlsearch<CR>', 'n', { desc = "Clear search highlight" })
 
 -- indent
-mapKey('<', '<gv', 'v')
-mapKey('>', '>gv', 'v')
+mapKey('<', '<gv', 'v', { desc = "Indent left and reselect" })
+mapKey('>', '>gv', 'v', { desc = "Indent right and reselect" })
 
 -- buffer
 -- mapKey('<C-p>', ':bp<cr>')
@@ -30,18 +30,18 @@ mapKey('>', '>gv', 'v')
 -- mapKey('<leader>l', ':ls<cr>')
 
 -- tabpage
-mapKey('<leader>t', ':tabnew %<cr>')
-mapKey('<leader>w', ':tabclose<cr>')
+-- mapKey('<leader>t', ':tabnew %<cr>', 'n', { desc = "Open current buffer in new tab" })
+-- mapKey('<leader>w', ':tabclose<cr>', 'n', { desc = "Close current tab" })
 
 -- zoom (using plugin, so comment it)
 -- mapKey('<C-w>z', '<C-w>_<C-w>|');
 
 -- terminal mode
-mapKey('<Esc>', '<C-\\><C-n>', 't')
+mapKey('<Esc>', '<C-\\><C-n>', 't', { desc = "Exit terminal mode" })
 
 -- file
-mapKey('<C-g>', '1<C-g>')
-mapKey('<leader>r', ':luafile ~/.config/nvim/init.lua<cr>')
+mapKey('<C-g>', '1<C-g>', 'n', { desc = "Show full file path" })
+mapKey('<leader>r', ':luafile ~/.config/nvim/init.lua<cr>', 'n', { desc = "Reload Neovim config" })
 -- mapKey('<leader>r', ':browse oldfiles!<cr>')
 
 -- LSP things

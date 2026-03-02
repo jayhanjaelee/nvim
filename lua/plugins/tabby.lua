@@ -19,7 +19,7 @@ return {
       -- vim.api.nvim_set_hl(0, "MyTabLineSel", { fg='#afb2b0', bg='#282828' }),
 
       -- mapKey('<leader>s', ':Tabby pick_window<cr>'),
-      vim.keymap.set("n", "<leader>,", ":Tabby rename_tab "),
+      vim.keymap.set("n", "<leader>,", ":Tabby rename_tab ", { desc = "Rename tab" }),
       line = function(line)
         return {
           {

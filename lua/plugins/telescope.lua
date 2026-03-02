@@ -87,23 +87,23 @@ return {
 
       mapKey('<Leader>ff', function()
         builtin.find_files(themes.get_ivy(opts))
-      end)
+      end, 'n', { desc = "Find files" })
 
       mapKey('<Leader>fg', function()
         builtin.live_grep(themes.get_ivy(opts))
-      end)
+      end, 'n', { desc = "Live grep" })
 
       mapKey('<Leader>fb', function()
         builtin.buffers(themes.get_ivy(opts))
-      end)
+      end, 'n', { desc = "List buffers" })
 
       mapKey('<Leader>fh', function()
         builtin.help_tags(themes.get_ivy(opts))
-      end)
+      end, 'n', { desc = "Search help tags" })
 
       mapKey('<Leader>fo', function()
         require("telescope").extensions.aerial.aerial(themes.get_ivy(opts))
-      end)
+      end, 'n', { desc = "Aerial symbol picker" })
 
       --[[
       mapKey('<Leader>fs', function()
@@ -116,13 +116,13 @@ return {
           layout_config = { height = 0.5 },
           show_line = false
         }))
-      end)
+      end, 'n', { desc = "LSP references" })
 
       mapKey('<leader>m', function()
         builtin.diagnostics(themes.get_ivy(
           { bufnr = 0, layout_config = { height = 0.5 } }
         ))
-      end)
+      end, 'n', { desc = "Buffer diagnostics" })
       
       -- mapKey('gr', function()
       --   builtin.lsp_references(themes.get_ivy({}))
@@ -161,7 +161,7 @@ return {
       -- Map a shortcut to open the picker.
       vim.api.nvim_set_keymap("n", "<leader>r",
         [[<cmd>lua require('telescope').extensions.recent_files.pick(require('telescope.themes').get_ivy({}))<CR>]],
-        {noremap = true, silent = true})
+        {noremap = true, silent = true, desc = "Recent files picker"})
     end
   }
 }
