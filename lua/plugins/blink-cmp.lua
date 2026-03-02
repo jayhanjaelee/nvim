@@ -20,6 +20,7 @@ return {
 
       -- Tab으로 자동완성 선택
       ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
+      ['<CR>'] = { 'select_and_accept', 'fallback' },
       ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
     },
 
