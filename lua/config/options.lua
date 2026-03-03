@@ -48,7 +48,6 @@ opt.encoding = "UTF-8"
 opt.fileencoding="UTF-8"
 opt.cmdheight = 1
 opt.scrolloff = 10
-opt.mouse = ""
 -- opt.mouse:append("a")
 
 -- tabby
@@ -58,4 +57,4 @@ opt.sessionoptions="buffers,curdir,folds,tabpages,winsize,winpos,terminal,localo
 opt.fixendofline = false
 
 -- mouse
-opt.mouse = a
+opt.mouse = "a"

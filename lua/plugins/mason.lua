@@ -17,9 +17,9 @@ local PACKAGES = {
 	"ts_ls",
 	"yamlls",
 	-- Format
-	"black",
-	"prettierd",
-	"stylua",
+	-- "black",
+	-- "prettierd",
+	-- "stylua",
 	-- Lint
 }
 

@@ -25,13 +25,14 @@ mapKey('>', '>gv', 'v', { desc = "Indent right and reselect" })
 -- buffer
 -- mapKey('<C-p>', ':bp<cr>')
 -- mapKey('<C-n>', ':bn<cr>')
--- mapKey('<leader>dd', ':bd<cr>')
--- mapKey('<leader><S-d>', ':%bd|e#|bd#<cr>') -- delete other buffers
+mapKey('<leader>dd', ':bd<cr>')
+mapKey('<leader><S-d>', ':%bd|e#|bd#<cr>') -- delete other buffers
 -- mapKey('<leader>l', ':ls<cr>')
 
 -- tabpage
--- mapKey('<leader>t', ':tabnew %<cr>', 'n', { desc = "Open current buffer in new tab" })
--- mapKey('<leader>w', ':tabclose<cr>', 'n', { desc = "Close current tab" })
+mapKey('<leader>t', ':tabnew %<cr>', 'n', { desc = "Open current buffer in new tab" })
+mapKey('<leader>w', ':tabclose<cr>', 'n', { desc = "Close current tab" })
+mapKey('<leader>W', ':tabonly<cr>', 'n', { desc = "tab only" })
 
 -- zoom (using plugin, so comment it)
 -- mapKey('<C-w>z', '<C-w>_<C-w>|');
@@ -46,3 +47,18 @@ mapKey('<leader>r', ':luafile ~/.config/nvim/init.lua<cr>', 'n', { desc = "Reloa
 
 -- LSP things
 -- mapKey('<leader>ca', vim.lsp.buf.code_action)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('HJLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Go to definition
+    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    mapKey("gd", vim.lsp.buf.definition, 'n', { buffer = ev.buf, desc = "Go to Definition" })
+    -- Go to declaration
+    mapKey("gD", vim.lsp.buf.declaration, 'n', { buffer = ev.buf, desc = "Go to Declaration" })
+    -- Show hover information
+    mapKey("K", vim.lsp.buf.hover, 'n', { buffer = ev.buf, desc = "Hover" })
+  end,
+})
