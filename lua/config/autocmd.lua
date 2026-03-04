@@ -28,6 +28,14 @@ vim.cmd([[autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 ex
 vim.cmd([[autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = jaylee,
+  pattern = { "c", "cpp" },
+  callback = function()
+    vim.keymap.set("n", "gh", "<cmd>LspClangdSwitchSourceHeader<CR>", { buffer = true, desc = "Switch Source/Header" })
+  end,
+})
+
 -- close quickfix window after opening it.
 -- vim.cmd([[autocmd FileType qf nnoremap <silent> <buffer> <CR> <CR>:cclose<CR>]])
 
