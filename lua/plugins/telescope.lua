@@ -111,13 +111,13 @@ return {
       end)
       --]]
 
-      mapKey('gr', function()
-        builtin.lsp_references(themes.get_ivy({
-          layout_config = { height = 0.5 },
-          show_line = false
-        }))
-      end, 'n', { desc = "LSP references" })
-
+      -- mapKey('gr', function()
+      --   builtin.lsp_references(themes.get_ivy({
+      --     layout_config = { height = 0.5 },
+      --     show_line = false
+      --   }))
+      -- end, 'n', { desc = "LSP references" })
+      --
       -- mapKey('<leader>m', function()
       --   builtin.diagnostics(themes.get_ivy(
       --     { bufnr = 0, layout_config = { height = 0.5 } }
