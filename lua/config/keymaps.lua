@@ -1,4 +1,4 @@
-local mapKey = require("utils.keyMapper").mapKey
+local mapKey = require("utils.keymapper").mapKey
 
 -- Neotree toggle
 mapKey('<leader>e', ':Neotree toggle<CR>', 'n', { desc = "Toggle Neotree" })
@@ -62,3 +62,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
     mapKey("K", vim.lsp.buf.hover, 'n', { buffer = ev.buf, desc = "Hover" })
   end,
 })
+
+-- quickfix list
+local function toggle_quickfix()
+  -- Check if the quickfix window is already open
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win["quickfix"] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+
+  -- If not open, open it (provided there are items in the list)
+  if not vim.tbl_isempty(vim.fn.getqflist()) then
+    vim.cmd.copen()
+  end
+end
+
+-- map the function to a key, for example, <Leader>q
+vim.keymap.set('n', '<c-q>', toggle_quickfix, { desc = "Toggle Quickfix Window" })
