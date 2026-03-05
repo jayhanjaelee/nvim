@@ -58,3 +58,9 @@ opt.fixendofline = false
 
 -- mouse
 opt.mouse = "a"
+
+-- ripgrep
+if vim.fn.executable("rg") == 1 then
+  opt.grepprg = "rg --vimgrep --smart-case"
+  -- opt.grepformat = "%f:%l:%c:%m"
+end
