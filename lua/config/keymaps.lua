@@ -23,8 +23,8 @@ mapKey('<', '<gv', 'v', { desc = "Indent left and reselect" })
 mapKey('>', '>gv', 'v', { desc = "Indent right and reselect" })
 
 -- buffer
--- mapKey('<C-p>', ':bp<cr>')
--- mapKey('<C-n>', ':bn<cr>')
+mapKey('<C-j>', ':bp<cr>')
+mapKey('<C-k>', ':bn<cr>')
 mapKey('<leader>dd', ':bd<cr>')
 mapKey('<leader><S-d>', ':%bd|e#|bd#<cr>') -- delete other buffers
 -- mapKey('<leader>l', ':ls<cr>')

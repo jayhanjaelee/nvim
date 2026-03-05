@@ -94,7 +94,11 @@ return {
       end, 'n', { desc = "Live grep" })
 
       mapKey('<Leader>fb', function()
-        builtin.buffers(themes.get_ivy(opts))
+        builtin.buffers(themes.get_ivy({
+          layout_config = { height = 0.5 },
+          sort_lastused = true,
+          sort_mru =true
+        }))
       end, 'n', { desc = "List buffers" })
 
       mapKey('<Leader>fh', function()
