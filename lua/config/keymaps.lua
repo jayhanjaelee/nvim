@@ -19,8 +19,8 @@ mapKey("<M-k>", ":horizontal resize +2<cr>", 'n', { desc = "Increase window heig
 mapKey('<leader>h', ':nohlsearch<CR>', 'n', { desc = "Clear search highlight" })
 
 -- indent
-mapKey('<', '<gv', 'v', { desc = "Indent left and reselect" })
-mapKey('>', '>gv', 'v', { desc = "Indent right and reselect" })
+-- mapKey('<', '<gv', 'v', { desc = "Indent left and reselect" })
+-- mapKey('>', '>gv', 'v', { desc = "Indent right and reselect" })
 
 -- buffer
 mapKey('<C-j>', ':bp<cr>')
