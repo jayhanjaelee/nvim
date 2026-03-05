@@ -80,4 +80,4 @@ local function toggle_quickfix()
 end
 
 -- map the function to a key, for example, <Leader>q
-vim.keymap.set('n', '<c-q>', toggle_quickfix, { desc = "Toggle Quickfix Window" })
+vim.keymap.set('n', '<leader>q', toggle_quickfix, { desc = "Toggle Quickfix Window" })
