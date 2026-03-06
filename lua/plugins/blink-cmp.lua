@@ -1,3 +1,5 @@
+local sources = { 'lsp', 'path', 'snippets', 'buffer' };
+
 return {
   'saghen/blink.cmp',
   version = '1.*',
@@ -22,6 +24,8 @@ return {
       ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
       ['<CR>'] = { 'select_and_accept', 'fallback' },
       ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+        -- show with a list of providers
+      ['<C-k>'] = { function(cmp) cmp.show({ providers = sources }) end },
     },
 
     appearance = {
