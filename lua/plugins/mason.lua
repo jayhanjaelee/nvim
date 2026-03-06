@@ -16,7 +16,8 @@ local PACKAGES = {
 	"ts_query_ls",
 	"ts_ls",
 	"yamlls",
-  "emmet-language-server"
+  "emmet-language-server",
+  "neocmakelsp"
 	-- Format
 	-- "black",
 	-- "prettierd",

@@ -37,7 +37,7 @@ return {
     "vue",
     "svelte",
   },
-  root_dir = require('lspconfig.util').root_pattern(
+  root_markers = {
     'tailwind.config.js',
     'tailwind.config.cjs',
     'tailwind.config.mjs',
@@ -46,8 +46,8 @@ return {
     'postcss.config.cjs',
     'postcss.config.mjs',
     'postcss.config.ts',
-    '.git'
-  ),
+    '.git',
+  },
   settings = {
     tailwindCSS = {
       classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
