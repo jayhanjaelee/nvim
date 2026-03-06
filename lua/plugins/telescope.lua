@@ -20,7 +20,7 @@ end
 
 return {
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim', version = '*',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require('telescope.builtin')
@@ -32,11 +32,12 @@ return {
           layout_config = { height = 0.5 },
           file_ignore_patterns = {
             'node_modules',
-            'vendor/*',
+            'vendor',
             '.*min.js',
             '%.o$',
             '%.d$',
-            '^bin/',
+            'bin',
+            'build',
             '*.log'
           },
           mappings = {
