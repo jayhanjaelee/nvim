@@ -16,6 +16,7 @@ local PACKAGES = {
 	"ts_query_ls",
 	"ts_ls",
 	"yamlls",
+  "emmet-language-server"
 	-- Format
 	-- "black",
 	-- "prettierd",
