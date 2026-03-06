@@ -32,7 +32,7 @@ vim.keymap.set('n', 'gK', function()
   vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
-vim.keymap.set('n', '<C-d>', vim.diagnostic.setloclist, { desc = 'Open diagnostic loclist' })
+vim.keymap.set('n', '<leader>aa', vim.diagnostic.setloclist, { desc = 'Open diagnostic loclist' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
 
 vim.api.nvim_create_autocmd('CursorHold', {
