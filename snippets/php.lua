@@ -6,7 +6,7 @@ local i = ls.insert_node
 
 return {
   -- Moodle 코스 페이지 초기화 (인터렉티브)
-  s('moodlecourseinit', {
+  s('moodleinit', {
     t({ 'use local_ubion\\course\\Course;',
         'use local_manager\\haksa\\api\\HaksaAPI;',
         '',
@@ -117,6 +117,12 @@ return {
     t({ '', '} else {', '  ' }),
     i(3),
     t({ '', '}' }),
+  }),
+
+  s('str', {
+    t({'$PAGE->requires->strings_for_js([', '\t'}),
+    i(1, "'string'"), t({'', ''}),
+    t('], '), i(2, '$plugin_name'), t(');')
   }),
 
 }
