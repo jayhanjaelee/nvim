@@ -42,6 +42,7 @@ opt.path:append('**')
 opt.wildmenu = true
 opt.wildoptions = "pum"
 opt.pumheight = 15
+opt.wildignore = "*.o,*.min.*,node_modules/**,.git/**,vendor/**,**/vendor/**,*.map.*,build/**,bin/**"
 
 -- etc
 opt.encoding = "UTF-8"
@@ -64,3 +65,5 @@ if vim.fn.executable("rg") == 1 then
   opt.grepprg = "rg --vimgrep --smart-case"
   -- opt.grepformat = "%f:%l:%c:%m"
 end
+
+-- opt.shada = "" -- ShaDa 저장 비활성화

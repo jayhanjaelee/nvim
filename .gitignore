@@ -4,3 +4,6 @@
 debug
 *.log
 bookmarks
+.omc
+.claude
+nul
