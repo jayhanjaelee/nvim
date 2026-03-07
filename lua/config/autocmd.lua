@@ -28,6 +28,19 @@ vim.cmd([[autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 ex
 vim.cmd([[autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 vim.cmd([[autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent]])
 
+-- Enable the built-in auto-reload option
+vim.opt.autoread = true
+-- Automatically check for changes when Neovim regains focus, a buffer is entered,
+-- or the cursor is idle, provided not in command mode
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "VimResume", "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("CheckForExternalChanges", { clear = true }),
+  callback = function()
+    if vim.fn.mode() ~= 'c' then -- Check if not in command mode
+      vim.cmd("checktime")
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   group = jaylee,
   pattern = { "c", "cpp" },
