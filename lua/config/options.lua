@@ -42,7 +42,7 @@ opt.path:append('**')
 opt.wildmenu = true
 opt.wildoptions = "pum"
 opt.pumheight = 15
-opt.wildignore = "*.o,*.min.*,node_modules/**,.git/**,vendor/**,**/vendor/**,*.map.*,build/**,bin/**"
+opt.wildignore = "node_modules/**,.git/**,vendor/**,**/vendor/**,build/**,bin/**,*.dll,*.so*.o,*.min.*,*.map.*,*.dSYM"
 
 -- etc
 opt.encoding = "UTF-8"
