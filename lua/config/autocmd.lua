@@ -10,8 +10,8 @@ vim.api.nvim_create_autocmd({'BufWinEnter'}, {
 })
 
 -- text format
-vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=c]])
-vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=r]])
+vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions+=c]])
+vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions+=r]])
 vim.cmd([[autocmd BufNewFile,BufRead,BufWinEnter * set formatoptions-=o]])
 
 -- indent for file type
