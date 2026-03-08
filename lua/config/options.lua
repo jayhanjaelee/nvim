@@ -60,6 +60,9 @@ opt.fixendofline = false
 -- mouse
 opt.mouse = "a"
 
+-- dictionary
+opt.spell = true
+
 -- ripgrep
 if vim.fn.executable("rg") == 1 then
   opt.grepprg = "rg --vimgrep --smart-case"

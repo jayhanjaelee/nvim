@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "CLogMacro",
   pattern = { "c" },
   callback = function()
-    vim.fn.setreg("e", "yoprintf(\"[DBG] " .. esc .. "pa: %s\", " .. esc .. "pA);" .. esc);
+    vim.fn.setreg("e", "yoprintf(\"[DBG] " .. esc .. "pa: %s\\n\", " .. esc .. "pa);" .. esc);
     end,
 })
 
