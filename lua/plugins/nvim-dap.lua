@@ -73,7 +73,6 @@ return {
           end,
           cwd = '${workspaceFolder}',
           stopOnEntry = false,
-          args = {},
         },
       }
 
@@ -182,10 +181,36 @@ return {
         require("dapui").eval(nil, { enter = true })
       end, { desc = "Evaluate expression under cursor" })
 
+      -- if osname == 'Darwin' then
+      --   vim.keymap.set("n", "<leader><F5>", terminateDap, { silent = true, desc = "Terminate debugging" })
+      --   vim.keymap.set("n", "<leader>ss", dap.step_over, { desc = "Step over" })
+      --   vim.keymap.set("n", "<leader>si", dap.step_into, { desc = "Step into" })
+      --   vim.keymap.set("n", "<leader>so", dap.step_out, { desc = "Step out" })
+      -- elseif string.find(osname, "Windows") then
+      --   vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true, desc = "Terminate debugging" })
+      --   vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = "Step out" })
+      --   vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
+      --   vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
+      -- end
+      local function del_dap_keymaps()
+        pcall(vim.keymap.del, "n", "<M-h>")
+        pcall(vim.keymap.del, "n", "<M-j>")
+        pcall(vim.keymap.del, "n", "<M-k>")
+        pcall(vim.keymap.del, "n", "<M-l>")
+      end
+
       local terminateDap = function()
         vim.cmd('DapTerminate')
         vim.cmd('DapVirtualTextDisable')
         vim.cmd("lua require'dapui'.close()")
+        del_dap_keymaps()
+      end
+
+      local function set_dap_keymaps()
+        vim.keymap.set("n", "<M-h>", terminateDap, { desc = "TerminateDap" })
+        vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Step over" })
+        vim.keymap.set("n", "<M-k>", dap.step_out, { desc = "Step out" })
+        vim.keymap.set("n", "<M-l>", dap.step_into, { desc = "Step into" })
       end
 
       -- vim.keymap.set("n", "<leader>do", ":lua require'dapui'.open()<cr>", { silent = true })
@@ -193,17 +218,6 @@ return {
       vim.keymap.set("n", "<leader>dt", ":lua require'dapui'.toggle()<cr>", { silent = true, desc = "Toggle DAP UI" })
       vim.keymap.set("n", "<leader>de", ":lua require'dapui'.elements.watches.add(vim.fn.expand('<cexpr>'))<cr>", { silent = true, desc = "Add to watches" })
       vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue/Start debugging" })
-      if osname == 'Darwin' then
-        vim.keymap.set("n", "<leader><F5>", terminateDap, { silent = true, desc = "Terminate debugging" })
-        vim.keymap.set("n", "<leader>ss", dap.step_over, { desc = "Step over" })
-        vim.keymap.set("n", "<leader>si", dap.step_into, { desc = "Step into" })
-        vim.keymap.set("n", "<leader>so", dap.step_out, { desc = "Step out" })
-      elseif string.find(osname, "Windows") then
-        vim.keymap.set("n", "<S-F5>", terminateDap, { silent = true, desc = "Terminate debugging" })
-        vim.keymap.set("n", "<S-F11>", dap.step_out, { desc = "Step out" })
-        vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
-        vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
-      end
       -- vim.keymap.set("n", "<F5>", dap.step_back)
       vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "Restart debugging" })
 
@@ -215,16 +229,20 @@ return {
 
       dap.listeners.before.attach.dapui_config = function()
         ui.open()
+        set_dap_keymaps()
       end
       dap.listeners.before.launch.dapui_config = function()
         vim.cmd('DapVirtualTextEnable')
         ui.open()
+        set_dap_keymaps()
       end
       dap.listeners.before.event_terminated.dapui_config = function()
         ui.close()
+        del_dap_keymaps()
       end
       dap.listeners.before.event_exited.dapui_config = function()
         ui.close()
+        del_dap_keymaps()
       end
     end,
   },
