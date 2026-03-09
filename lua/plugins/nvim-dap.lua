@@ -207,7 +207,7 @@ return {
       end
 
       local function set_dap_keymaps()
-        vim.keymap.set("n", "<M-h>", terminateDap, { desc = "TerminateDap" })
+        vim.keymap.set("n", "<S-F5>", terminateDap, { desc = "TerminateDap" })
         vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Step over" })
         vim.keymap.set("n", "<M-k>", dap.step_out, { desc = "Step out" })
         vim.keymap.set("n", "<M-l>", dap.step_into, { desc = "Step into" })

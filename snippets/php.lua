@@ -46,7 +46,7 @@ return {
   }),
 
   -- Moodle AMD 호출
-  s('amd', {
+  s('moodleamd', {
     t('$PAGE->requires->js_call_amd(\''),
     i(1, '{module/name}'),
     t('\', \''),
