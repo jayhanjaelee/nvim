@@ -61,7 +61,7 @@ opt.fixendofline = false
 opt.mouse = "a"
 
 -- dictionary
-opt.spell = true
+-- opt.spell = true
 
 -- ripgrep
 if vim.fn.executable("rg") == 1 then
