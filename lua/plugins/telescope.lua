@@ -160,7 +160,7 @@ return {
         require('telescope').load_extension("recent_files")
       })
       -- Map a shortcut to open the picker.
-      vim.api.nvim_set_keymap("n", "<leader>r",
+      vim.api.nvim_set_keymap("n", "<leader>R",
         [[<cmd>lua require('telescope').extensions.recent_files.pick(require('telescope.themes').get_ivy({}))<CR>]],
         {noremap = true, silent = true, desc = "Recent files picker"})
     end

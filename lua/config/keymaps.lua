@@ -42,7 +42,7 @@ mapKey('<Esc>', '<C-\\><C-n>', 't', { desc = "Exit terminal mode" })
 
 -- file
 mapKey('<C-g>', '1<C-g>', 'n', { desc = "Show full file path" })
-mapKey('<leader>r', ':luafile ~/.config/nvim/init.lua<cr>', 'n', { desc = "Reload Neovim config" })
+-- mapKey('<leader>r', ':luafile ~/.config/nvim/init.lua<cr>', 'n', { desc = "Reload Neovim config" })
 -- mapKey('<leader>r', ':browse oldfiles!<cr>')
 
 -- LSP things
