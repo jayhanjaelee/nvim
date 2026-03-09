@@ -7,7 +7,6 @@ local PACKAGES = {
 	"cssls",
 	"cssmodules_ls",
 	"dockerls",
-	"eslint",
 	"html",
 	"jsonls",
 	"lua_ls",
@@ -23,6 +22,7 @@ local PACKAGES = {
 	-- "prettierd",
 	-- "stylua",
 	-- Lint
+	-- "eslint"
 }
 
 return {

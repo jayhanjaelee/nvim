@@ -39,6 +39,8 @@ vim.api.nvim_create_augroup("PHPLogMacro", { clear = true })
 local php_macro = function()
   vim.fn.setreg("e", "")
   vim.fn.setreg("e", "yoerror_log('[DBG] ".. esc .."pa:'.".. esc.. "pa);".. esc)
+  vim.fn.setreg("w", "")
+  vim.fn.setreg("w", "yoerror_log('[DBG] " .. esc .. "pa:'.print_r(" .. esc .. "pa, true));" .. esc)
 end
 vim.api.nvim_create_autocmd("FileType", {
   group = "PHPLogMacro",
