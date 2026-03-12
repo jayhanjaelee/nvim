@@ -125,7 +125,7 @@ return {
               }
             },
             position = "left",
-            size = 60
+            size = 35
           },
           {
             elements = {
@@ -139,7 +139,7 @@ return {
               }
             },
             position = "bottom",
-            size = 15
+            size = 10
           }
         },
       })

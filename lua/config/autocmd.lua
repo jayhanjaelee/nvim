@@ -52,8 +52,15 @@ vim.api.nvim_create_autocmd("FileType", {
 -- close quickfix window after opening it.
 -- vim.cmd([[autocmd FileType qf nnoremap <silent> <buffer> <CR> <CR>:cclose<CR>]])
 
--- set quickfix window height to 20 lines
-vim.cmd([[autocmd FileType qf resize 20]])
+-- set quickfix window height to 30% of screen height
+vim.api.nvim_create_autocmd("FileType", {
+  group = jaylee,
+  pattern = "qf",
+  callback = function()
+    local qf_height = math.floor(vim.o.lines * 0.3)
+    vim.cmd("resize " .. qf_height)
+  end,
+})
 
 -- large file loading performance
 -- local function disable_syntax_treesitter()
