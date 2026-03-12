@@ -8,7 +8,7 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 opt.indentexpr = ""
-opt.wrap = false
+opt.wrap = true
 
 -- search
 opt.hlsearch = true
@@ -49,7 +49,6 @@ opt.encoding = "UTF-8"
 opt.fileencoding="UTF-8"
 opt.cmdheight = 1
 opt.scrolloff = 10
--- opt.mouse:append("a")
 
 -- tabby
 opt.sessionoptions="buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
@@ -59,6 +58,7 @@ opt.fixendofline = false
 
 -- mouse
 opt.mouse = "a"
+opt.mousescroll = "ver:10,hor:6";
 
 -- dictionary
 -- opt.spell = true
