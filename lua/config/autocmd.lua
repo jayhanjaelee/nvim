@@ -62,6 +62,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- use system clipboard by default
+if vim.fn.has('clipboard') == 1 then
+  -- Use the system clipboard for yanking and pasting
+  vim.opt.clipboard = 'unnamedplus'  -- Use the + register for the clipboard
+end
+
 -- large file loading performance
 -- local function disable_syntax_treesitter()
 --     print("Big file, disabling syntax, treesitter and folding")
@@ -93,42 +99,4 @@ vim.api.nvim_create_autocmd("FileType", {
 -- vim.api.nvim_create_autocmd({ "BufReadPre", "FileReadPre" }, {
 --     group = "BigFileDisable",
 --     callback = check_file_size,
--- })
-
--- use system clipboard by default
-if vim.fn.has('clipboard') == 1 then
-  -- Use the system clipboard for yanking and pasting
-  vim.opt.clipboard = 'unnamedplus'  -- Use the + register for the clipboard
-end
-
--- WSL yank support
-local clip = '/mnt/c/Windows/System32/clip.exe'  -- change this path according to your mount point
-
-if vim.fn.executable(clip) == 1 then
-    vim.api.nvim_exec([[
-        augroup WSLYank
-            autocmd!
-            autocmd TextYankPost * if v:event.operator ==# 'y' | call system(']] .. clip .. [[' , @0) | endif
-        augroup END
-    ]], false)
-end
-
--- LSP signature
--- vim.api.nvim_create_autocmd("LspAttach", {
---   callback = function(args)
---     local bufnr = args.buf
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---     if vim.tbl_contains({ 'null-ls' }, client.name) then  -- blacklist lsp
---       return
---     end
---     require("lsp_signature").on_attach({
---       bind = true, -- mandatory
---       doc_lines = 80,
---       max_width = 100, -- max_width of signature floating_window, line will be wrapped if exceed max_width
---       hint_enable = false,
---       handler_opts = {
---         border = "single"
---       },
---     }, bufnr)
---   end,
 -- })

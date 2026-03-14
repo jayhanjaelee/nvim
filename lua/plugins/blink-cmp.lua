@@ -26,11 +26,16 @@ return {
       ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
         -- show with a list of providers
       ['<C-k>'] = { function(cmp) cmp.show({ providers = sources }) end },
+      ['<M-s>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
     },
 
     appearance = {
       nerd_font_variant = 'mono',
     },
+
+    -- signature = {
+    --   enabled = true
+    -- },
 
     completion = {
       documentation = {

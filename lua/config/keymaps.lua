@@ -38,7 +38,7 @@ mapKey('<leader>W', ':tabonly<cr>', 'n', { desc = "tab only" })
 -- mapKey('<C-w>z', '<C-w>_<C-w>|');
 
 -- terminal mode
-mapKey('<Esc>', '<C-\\><C-n>', 't', { desc = "Exit terminal mode" })
+-- mapKey('<Esc>', '<C-\\><C-n>', 't', { desc = "Exit terminal mode" })
 
 -- file
 mapKey('<C-g>', '1<C-g>', 'n', { desc = "Show full file path" })

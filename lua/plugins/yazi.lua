@@ -21,7 +21,7 @@ return {
       desc = "Open the file manager in nvim's working directory",
     },
     {
-      "<c-up>",
+      "<M-y>",
       "<cmd>Yazi toggle<cr>",
       desc = "Resume the last yazi session",
     },
@@ -33,6 +33,12 @@ return {
     keymaps = {
       show_help = "<f1>",
     },
+
+    -- the type of border to use for the floating window. Can be many values,
+    -- including 'none', 'rounded', 'single', 'double', 'shadow', etc. For
+    -- more information, see :h nvim_open_win
+    yazi_floating_window_border = "none",
+
   },
   -- 👇 if you use `open_for_directories=true`, this is recommended
   init = function()
