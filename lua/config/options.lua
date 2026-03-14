@@ -65,12 +65,13 @@ opt.mousescroll = "ver:10,hor:6";
 
 -- shell (Windows: use PowerShell)
 if vim.fn.has("win32") == 1 then
-  opt.shell = "powershell"
-  opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+  local pwsh = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
+  opt.shell = pwsh
+  opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
   opt.shellquote = ""
   opt.shellxquote = ""
-  opt.shellpipe = "| Out-File -Encoding UTF8 %s"
-  opt.shellredir = "| Out-File -Encoding UTF8 %s"
+  opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
 end
 
 -- ripgrep
