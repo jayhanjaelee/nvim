@@ -20,6 +20,7 @@ require("config.keymaps")
 require("config.options")
 require("config.autocmd")
 require("config.macros")
+require("config.terminal")
 
 local plugins = "plugins"
 local opts = {}
