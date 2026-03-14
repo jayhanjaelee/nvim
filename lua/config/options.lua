@@ -63,6 +63,16 @@ opt.mousescroll = "ver:10,hor:6";
 -- dictionary
 -- opt.spell = true
 
+-- shell (Windows: use PowerShell)
+if vim.fn.has("win32") == 1 then
+  opt.shell = "powershell"
+  opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+  opt.shellquote = ""
+  opt.shellxquote = ""
+  opt.shellpipe = "| Out-File -Encoding UTF8 %s"
+  opt.shellredir = "| Out-File -Encoding UTF8 %s"
+end
+
 -- ripgrep
 if vim.fn.executable("rg") == 1 then
   opt.grepprg = "rg --vimgrep --smart-case"
