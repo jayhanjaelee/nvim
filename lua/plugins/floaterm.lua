@@ -3,7 +3,7 @@ return {
   dependencies = "nvzone/volt",
   opts = {
     border = false,
-    size = { h = 70, w = 80 },
+    size = { h = 80, w = 80 },
 
     -- to use, make this func(buf)
     mappings = { sidebar = nil, term = nil },

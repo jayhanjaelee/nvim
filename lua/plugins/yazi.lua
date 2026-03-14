@@ -39,6 +39,7 @@ return {
     -- more information, see :h nvim_open_win
     yazi_floating_window_border = "none",
 
+    floating_window_scaling_factor = 0.8,
   },
   -- 👇 if you use `open_for_directories=true`, this is recommended
   init = function()
