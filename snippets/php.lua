@@ -5,6 +5,16 @@ local t = ls.text_node
 local i = ls.insert_node
 
 return {
+  -- measure execution time
+  s('calc_time', {
+    t({'$startTime = microtime(true);', ''}),
+    t({'// do something.', ''}),
+    t({'$endTime = microtime(true);', ''}),
+    t({'$executionTime = $endTime - $startTime;', ''}),
+    t({"$formattedTime = number_format($executionTime, 1, '.', '');", ''}),
+    t({'error_log("Execution time: " . $formattedTime . " seconds");', ''}),
+  }),
+
   -- Moodle 코스 페이지 초기화 (인터렉티브)
   s('moodleinit', {
     t({ 'use local_ubion\\course\\Course;',
