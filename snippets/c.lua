@@ -5,7 +5,7 @@ local t = ls.text_node
 local i = ls.insert_node
 
 return {
-  s('readfile', {
+  s('c_readfile', {
     t('FILE *file = fopen('),
     i(1, '"filename.txt"'),
     t(' ,'),

@@ -225,7 +225,7 @@ return {
       -- default setting not working
       -- require('dap').defaults.fallback.exception_breakpoints = {}
       -- Notice, Warning, Error, Exception, *
-      require('dap').defaults.fallback.exception_breakpoints = {'Exception', 'Error'}
+      require('dap').defaults.fallback.exception_breakpoints = {'Exception'}
       vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_exception_breakpoints({'Exception'})<cr>", { desc = "Set exception breakpoint" })
 
       dap.listeners.before.attach.dapui_config = function()
