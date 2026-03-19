@@ -16,7 +16,7 @@ return {
   }),
 
   -- Moodle 코스 페이지 초기화 (인터렉티브)
-  s('moodleinit', {
+  s('mdl_init', {
     t({ 'use local_ubion\\course\\Course;',
         'use local_manager\\haksa\\api\\HaksaAPI;',
         '',
@@ -56,7 +56,7 @@ return {
   }),
 
   -- Moodle AMD 호출
-  s('moodleamd', {
+  s('mdl_amd', {
     t('$PAGE->requires->js_call_amd(\''),
     i(1, '{module/name}'),
     t('\', \''),
@@ -65,7 +65,7 @@ return {
   }),
 
   -- Moodle 페이지 렌더링 (header, heading, footer)
-  s('moodlepage', {
+  s('mdl_page', {
     t('echo $OUTPUT->header();'),
     t({ '', '', 'echo $OUTPUT->heading(' }),
     i(1, '$pagetitle'),
@@ -74,8 +74,14 @@ return {
     t({ '', '', 'echo $OUTPUT->footer();' }),
   }),
 
+  s('mdl_str', {
+    t({'$PAGE->requires->strings_for_js([', '\t'}),
+    i(1, "'string'"), t({'', ''}),
+    t('], '), i(2, '$plugin_name'), t(');')
+  }),
+
   -- PHP try-catch 블록
-  s('phptry', {
+  s('php_try', {
     t({ 'try {',
         '  ' }),
     i(1),
@@ -88,7 +94,7 @@ return {
   }),
 
   -- PHP foreach 루프
-  s('phpforeach', {
+  s('php_foreach', {
     t('foreach ($'),
     i(1, 'array'),
     t(' as $'),
@@ -101,7 +107,7 @@ return {
   }),
 
   -- PHP 클래스 정의
-  s('phpclass', {
+  s('php_class', {
     t('class '), i(1, 'ClassName'), t({ ' {', '  ' }),
     t('public function __construct() {'),
     t({ '', '    ' }),
@@ -110,7 +116,7 @@ return {
   }),
 
   -- PHP 함수 정의
-  s('phpfunc', {
+  s('php_func', {
     t('public function '), i(1, 'functionName'), t('('),
     i(2, '$param'),
     t({ ') {', '  ' }),
@@ -121,18 +127,12 @@ return {
   }),
 
   -- PHP if-else 블록
-  s('phpif', {
+  s('php_if', {
     t('if ('), i(1, '$condition'), t({ ') {', '  ' }),
     i(2),
     t({ '', '} else {', '  ' }),
     i(3),
     t({ '', '}' }),
-  }),
-
-  s('str', {
-    t({'$PAGE->requires->strings_for_js([', '\t'}),
-    i(1, "'string'"), t({'', ''}),
-    t('], '), i(2, '$plugin_name'), t(');')
   }),
 
 }
