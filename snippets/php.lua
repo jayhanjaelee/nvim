@@ -15,6 +15,55 @@ return {
     t({'error_log("Execution time: " . $formattedTime . " seconds");', ''}),
   }),
 
+  s('mdl_sql_get_field', {
+    t({'$sql = "SELECT ', ''}),
+    t({'\t'}),
+    i(1, 'course_code'),
+    t({'', ''}),
+    t({'FROM {course} c', ''}),
+    t({'JOIN {course_ubion} cu', ''}),
+    t({'ON c.id = cu.course', ''}),
+    t({'WHERE ', ''}),
+    i(2, 'c.fullname'),
+    t({' = '}),
+    i(3, ':fullname'),
+    t({'";', ''}),
+    t({'$params = [', ''}),
+    t({"\t"}),
+    i(4, 'fullname'),
+    t(" => "),
+    i(5, '$keyword'),
+    t({'', ''}),
+    t({']', ''}),
+    i(6, '$course_code'),
+    t({' = $DB->get_field_sql($sql, $params);', ''}),
+  });
+
+  s('mdl_sql_get_records', {
+    t({'$sql = "SELECT ', ''}),
+    t({'\t'}),
+    i(1, '*'),
+    t({'', ''}),
+    t({'FROM {course} c', ''}),
+    t({'JOIN {course_ubion} cu', ''}),
+    t({'ON c.id = cu.course', ''}),
+    t({'WHERE ', ''}),
+    i(2, 'c.id'),
+    t({' = '}),
+    i(3, ':id'),
+    t({'";', ''}),
+    t({'$params = [', ''}),
+    t({"\t"}),
+    i(4, "'id'"),
+    t(" => "),
+    i(5, '$courseid'),
+    t({'', ''}),
+    t({'];', ''}),
+    i(6, '$course'),
+    t({' = $DB->get_records_sql($sql, $params);', ''}),
+  });
+
+
   -- Moodle 코스 페이지 초기화 (인터렉티브)
   s('mdl_init', {
     t({ 'use local_ubion\\course\\Course;',
