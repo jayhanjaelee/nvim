@@ -30,7 +30,7 @@ mapKey('<leader><S-d>', ':%bd|e#|bd#<cr>') -- delete other buffers
 -- mapKey('<leader>l', ':ls<cr>')
 
 -- tabpage
-mapKey('<leader>t', ':tabnew %<cr>:tabm $<cr>', 'n', { desc = "Open current buffer in new tab" })
+mapKey('<leader>t', ':tabnew %<cr>', 'n', { desc = "Open current buffer in new tab" })
 mapKey('<leader>w', ':tabclose<cr>', 'n', { desc = "Close current tab" })
 mapKey('<leader>W', ':tabonly<cr>', 'n', { desc = "tab only" })
 
