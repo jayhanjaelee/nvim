@@ -206,6 +206,11 @@ return {
     t({ '', '}' }),
   }),
 
+  s('set_limit', {
+    t({'ini_set("memory_limit", -1); // set unlimited memory storage.', ''}),
+    t({'set_time_limit(0); // set unlimited execution time.', ''})
+  }),
+
   -- AJAX 다운로드 버튼 핸들러
   s('ajax_download', {
     t({
@@ -268,6 +273,41 @@ return {
       "\t\t\treturn false;",
       "\t\t});",
     }),
+  }),
+
+  s('base_dto', {
+    t({'<?php', ''}),
+    t({'abstract class BaseDTO {', ''}),
+    t({'\tpublic static function fromStdClass($obj): self {', ''}),
+    t({'\t\t$dto = new static();', ''}),
+    t({'\t\tforeach ((array)$obj as $key => $value) {', ''}),
+    t({'\t\t\tif (property_exists($dto, $key)) {', ''}),
+    t({'\t\t\t\t$dto->$key = $value;', ''}),
+    t({'\t\t\t}', ''}),
+    t({'\t\t}', ''}),
+    t({'\t\treturn $dto;', ''}),
+    t({'\t}', ''}),
+    t({'}', ''}),
+  }),
+
+  s('set_dto', {
+    t({'if ($dtoClass) {', ''}),
+    t({'\treturn array_map(function($record) use ($dtoClass) {', ''}),
+    t({'\t\treturn $dtoClass::fromStdClass($record);', ''}),
+    t({'\t}, $records);', ''}),
+    t({'}', ''}),
+  }),
+
+  s('singleton', {
+    t({'private static $instance;', ''}),
+    t({'', ''}),
+    t({'public static function getInstance() {', ''}),
+    t({'\tif (!isset(self::$instance)) {', ''}),
+    t({'\t\t$c = __CLASS__;', ''}),
+    t({'\t\tself::$instance = new $c;', ''}),
+    t({'\t}', ''}),
+    t({'\treturn self::$instance;', ''}),
+    t({'}', ''})
   }),
 
 }
