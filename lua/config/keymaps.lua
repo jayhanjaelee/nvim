@@ -82,3 +82,6 @@ end
 -- map the function to a key, for example, <Leader>q
 mapKey('<leader>q', toggle_quickfix, 'n', { desc = "Toggle Quickfix Window" })
 -- vim.keymap.set('n', '<leader>q', toggle_quickfix, { desc = "Toggle Quickfix Window" })
+
+-- 날짜 추가
+mapKey('<M-d>', '<C-r>=strftime("%Y-%m-%d")<CR>', 'i', { desc = "Insert today's date" })

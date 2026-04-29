@@ -4,6 +4,12 @@ return {
     require('markdown-table-mode').setup({
       filetype = {
         '*.md',
+        '*.php',
+        '*.html',
+        '*.mustache',
+        '*.css',
+        '*.scss',
+        '*.c'
       },
       options = {
         insert = true, -- when typing "|"
