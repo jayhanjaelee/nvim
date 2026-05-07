@@ -27,6 +27,12 @@ return {
     })
   }),
 
+  s('mdl_cache', {
+    t({"$cache = cache::make('"}), i(1, 'local_ubion'), t({"', '"}), i(2, 'current_semester'), t({"');", ''}),
+    t({'$current_semester = $cache->get(\''}), i(3, 'current_semester'), t({'\');	', ''}),
+    t({"$cache->set('"}), i(4, 'current_semester'), t({"', "}), i(5, '$current_semester'), t({");"})
+  }),
+
   -- measure execution time
   s('calc_time', {
     t({'$startTime = microtime(true);', ''}),
