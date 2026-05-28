@@ -76,7 +76,7 @@ end
 
 -- ripgrep
 if vim.fn.executable("rg") == 1 then
-  opt.grepprg = "rg --vimgrep --smart-case"
+  opt.grepprg = "rg --vimgrep --hidden"
   -- opt.grepformat = "%f:%l:%c:%m"
 end
 

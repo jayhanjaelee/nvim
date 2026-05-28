@@ -13,7 +13,7 @@ return {
 
       -- Available lists : { "Notice", "Warning", "Error", "Exception" }
       -- 적용 안되는 경우가 있어서 밑에서 따로 설정.
-      dap.defaults.fallback.exception_breakpoints = {'Exception'};
+      dap.defaults.fallback.exception_breakpoints = {};
 
       local phpDapSrc = nil;
       local osname = vim.loop.os_uname().sysname
@@ -86,6 +86,12 @@ return {
         command = "node",
         -- change this to where you build vscode-php-debug
         args = { phpDapSrc },
+        ignore = {
+           "**/mustache/src/Mustache/**",
+          "**/vendor/mustache/**",
+          "**/lib/mustache/**",
+          "**/*.mustache.php",   -- 컴파일된 mustache 캐시 파일
+        },
       }
 
       dap.configurations.php = {
@@ -222,10 +228,8 @@ return {
       -- vim.keymap.set("n", "<F5>", dap.step_back)
       vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "Restart debugging" })
 
-      -- default setting not working
-      -- require('dap').defaults.fallback.exception_breakpoints = {}
       -- Notice, Warning, Error, Exception, *
-      require('dap').defaults.fallback.exception_breakpoints = {'Exception'}
+      require('dap').defaults.fallback.exception_breakpoints = {}
       vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_exception_breakpoints({'Exception'})<cr>", { desc = "Set exception breakpoint" })
 
       dap.listeners.before.attach.dapui_config = function()

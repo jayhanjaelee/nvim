@@ -6,6 +6,16 @@ local i = ls.insert_node
 
 return {
 
+  -- 
+  s('mdl_add_setting', {
+    t({"$temp = new admin_settingpage($pluginname . '_facetoface', get_string('setting_title_facetoface', $pluginname));", ''}),
+    t({"$name = $pluginname . '/isFacetoface';", ''}),
+    t({"$title = get_string('setting_is_facetoface', $pluginname);", ''}),
+    t({"$description = get_string('setting_is_facetoface_help', $pluginname);", ''}),
+    t({"$default = 1;", ''}),
+    t({"$setting = new admin_setting_configcheckbox($name, $title, $description, $default);", ''}),
+  }),
+      
   s('mdl_get_course_format', {
     t({'$course_format = course_get_format($id);', ''}),
     t({'$course = $course_format->get_course();', ''}),
