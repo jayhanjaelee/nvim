@@ -6,6 +6,15 @@ local i = ls.insert_node
 
 return {
 
+  -- render template
+  s('render_mustache_template', {
+    t({"echo $OUTPUT->header();", ""}),
+    t({"echo $OUTPUT->render_from_template("}),
+    i(1, "'local_manager/hello/index',"),
+    t({"$ctx);", ""}),
+    t({"echo $OUTPUT->footer();", ""}),
+  }),
+
   -- curl
   s('curl', {
     t({"$ch = curl_init();", ""}),
