@@ -6,6 +6,22 @@ local i = ls.insert_node
 
 return {
 
+  -- curl
+  s('curl', {
+    t({"$ch = curl_init();", ""}),
+    t({"curl_setopt($ch, CURLOPT_URL, $url);", ""}),
+    t({"curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);", ""}),
+    t({"curl_setopt($ch, CURLOPT_TIMEOUT, 5);   // timeout은 5초로 설정.", ""}),
+    t({"curl_setopt($ch, CURLOPT_POST, true);", ""}),
+    t({"curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));", ""}),
+    t({"curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);", ""}),
+    t({"curl_exec($ch);", ""}),
+    t({"if (curl_errno($ch)) {", ""}),
+    t({"\terror_log(print_r(curl_error($ch), true));", ""}),
+    t({"}", ""}),
+    t({"curl_close($ch);", ""}),
+  }),
+
   -- 
   s('mdl_add_setting', {
     t({"$temp = new admin_settingpage($pluginname . '_facetoface', get_string('setting_title_facetoface', $pluginname));", ''}),
