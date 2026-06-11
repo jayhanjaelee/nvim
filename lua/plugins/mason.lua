@@ -16,8 +16,9 @@ local PACKAGES = {
 	"ts_ls",
 	"yamlls",
   "emmet-language-server",
-  "neocmakelsp"
+  "neocmakelsp",
 	-- Format
+	{ "php-cs-fixer", version = "v2.19.3" },
 	-- "black",
 	-- "prettierd",
 	-- "stylua",

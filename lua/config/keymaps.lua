@@ -85,3 +85,11 @@ mapKey('<leader>q', toggle_quickfix, 'n', { desc = "Toggle Quickfix Window" })
 
 -- 날짜 추가
 mapKey('<M-d>', '<C-r>=strftime("%Y-%m-%d")<CR>', 'i', { desc = "Insert today's date" })
+
+-- 현재 버퍼의 파일 경로를 클립보드로 복사
+mapKey('<leader>cp', function()
+  local path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', path)
+  vim.notify('Copied path: ' .. path)
+end, 'n', { desc = "Copy current buffer's file path" })
+

@@ -13,10 +13,9 @@ return {
           command = "php-cs-fixer",
           args = {
             "fix",
-            "--rules=@PSR12", -- Formatting preset. Other presets are available, see the php-cs-fixer docs.
             "$FILENAME",
           },
-          stdin = false,
+          stdin = false
         },
       },
       notify_on_error = true,
@@ -25,5 +24,10 @@ return {
       -- 	lsp_format = "fallback",
       -- },
     })
+
+    -- Alt+f 로 현재 버퍼 포맷.
+    vim.keymap.set({ "n", "v" }, "<M-f>", function()
+      require("conform").format({ async = true, lsp_format = "fallback" })
+    end, { desc = "Format buffer (conform)" })
   end,
 }

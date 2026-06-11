@@ -17,7 +17,7 @@ return {
         undefinedClassConstants = false,
         undefinedMethods = false,
         undefinedProperties = false,
-        undefinedVariables = true,
+        undefinedVariables = false -- Moodle 전역변수($CFG, $DB, $PAGE 등) 오탐(P1008) 방지
       },
     },
   },
