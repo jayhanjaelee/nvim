@@ -6,6 +6,19 @@ local i = ls.insert_node
 
 return {
 
+  s('mdl_require_ubion', {
+    t("require_once $CFG->dirroot.'/local/ubion/library/"), i(1, "user/lib.php"), t("';")
+  }),
+
+  s('mdl_moodle_internal', {
+    t("defined('MOODLE_INTERNAL') || die();")
+  }),
+
+  s('mdl_sql_like', {
+    t({"$where[] = $DB->sql_like('LOWER('.$fullname.')', ':keyword');"}, {}),
+    t({"$param['keyword'] = '%'.strtolower($keyword).'%';"}, {})
+  }),
+
   -- render template
   s('render_mustache_template', {
     t({"echo $OUTPUT->header();", ""}),
