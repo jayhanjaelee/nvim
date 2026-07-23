@@ -17,7 +17,7 @@ return {
 
       local phpDapSrc = nil;
       local osname = vim.loop.os_uname().sysname
-      if osname == 'Darwin' then
+      if osname == 'Darwin' or osname == 'Linux' then
         -- unix
         phpDapSrc = os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js"
       elseif string.find(osname, "Windows") then
@@ -100,6 +100,10 @@ return {
           request = "launch",
           name = "Listen for Xdebug",
           port = 9003,
+          -- moodle 컨테이너에 . 가 /var/www/html 로 bind mount 되어 있음
+          pathMappings = {
+            ["/var/www/html"] = "${workspaceFolder}",
+          },
         },
         -- to run php right from the editor
         -- {

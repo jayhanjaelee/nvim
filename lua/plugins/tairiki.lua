@@ -16,17 +16,15 @@ return {
       toggle_style_list = {'dark'}, -- List of styles to toggle between TODO
 
       -- Change code style ---
-      -- see :help nvim_set_hl() for available keys
-      -- use empty table {} to disable all styles
+      -- values are strings like "italic", "bold", "bold,italic", or "none"
       code_style = {
-        comments = { italic = false },
-        conditionals = {},
-        keywords = {},
-        functions = {},
-        strings = {},
-        variables = {},
-        parameters = {},
-        types = {},
+        comments = "none",
+        conditionals = "none",
+        keywords = "none",
+        functions = "none",
+        strings = "none",
+        variables = "none",
+        constants = "none",
       },
 
       -- Lualine options --
@@ -44,12 +42,6 @@ return {
         undercurl = false,   -- use undercurl instead of underline for diagnostics
         background = false,    -- use background color for virtual text
       },
-
-      -- optional function to modify or add colors to the palette
-      -- palette definitions are in lua/tairiki/palette
-      colors = function(colors, opts) end,
-      -- optional function to override highlight groups
-      highlights = function(groups, colors, opts) end,
     }
 
     -- Lua

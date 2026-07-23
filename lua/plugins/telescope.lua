@@ -1,4 +1,4 @@
-local mapKey = require("utils.keyMapper").mapKey
+local mapKey = require("utils.keymapper").mapKey
 
 function telescope_open_single_or_multi(bufnr)
   local actions = require("telescope.actions")
