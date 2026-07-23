@@ -81,3 +81,6 @@ if vim.fn.executable("rg") == 1 then
 end
 
 -- opt.shada = "" -- ShaDa 저장 비활성화
+
+opt.splitbelow = true
+opt.splitright = true

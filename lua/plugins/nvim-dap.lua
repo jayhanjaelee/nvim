@@ -99,6 +99,7 @@ return {
           type = "php",
           request = "launch",
           name = "Listen for Xdebug",
+          hostname = "0.0.0.0", -- 모든 인터페이스에서 Xdebug 연결 허용
           port = 9003,
         },
         -- to run php right from the editor
