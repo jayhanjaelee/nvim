@@ -82,5 +82,5 @@ end
 
 -- opt.shada = "" -- ShaDa 저장 비활성화
 
-opt.splitbelow = true
-opt.splitright = true
+-- opt.splitbelow = true
+-- opt.splitright = true

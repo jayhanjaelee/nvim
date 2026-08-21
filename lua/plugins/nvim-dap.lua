@@ -203,7 +203,14 @@ return {
       --   vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
       --   vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
       -- end
+      -- DAP 실행 중에는 splitbelow 를 끄고, 종료 시 원래 값으로 복원.
+      local saved_splitbelow = nil
+
       local function del_dap_keymaps()
+        if saved_splitbelow ~= nil then
+          vim.o.splitbelow = saved_splitbelow
+          saved_splitbelow = nil
+        end
         pcall(vim.keymap.del, "n", "<M-h>")
         pcall(vim.keymap.del, "n", "<M-j>")
         pcall(vim.keymap.del, "n", "<M-k>")
@@ -218,6 +225,10 @@ return {
       end
 
       local function set_dap_keymaps()
+        if saved_splitbelow == nil then
+          saved_splitbelow = vim.o.splitbelow
+        end
+        vim.o.splitbelow = false
         vim.keymap.set("n", "<S-F5>", terminateDap, { desc = "TerminateDap" })
         vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Step over" })
         vim.keymap.set("n", "<M-k>", dap.step_out, { desc = "Step out" })
