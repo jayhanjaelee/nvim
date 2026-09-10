@@ -62,11 +62,30 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- use system clipboard by default
+-- use system clipboard by default (Linux)
+if vim.fn.executable('xclip') == 1 then
+  vim.g.clipboard = {
+    name = 'xclip',
+    copy = {
+      ['+'] = { 'xclip', '-quiet', '-i', '-selection', 'clipboard' },
+      ['*'] = { 'xclip', '-quiet', '-i', '-selection', 'primary' },
+    },
+    paste = {
+      ['+'] = { 'xclip', '-o', '-selection', 'clipboard' },
+      ['*'] = { 'xclip', '-o', '-selection', 'primary' },
+    },
+    cache_enabled = 1,
+  }
+end
+
 if vim.fn.has('clipboard') == 1 then
   -- Use the system clipboard for yanking and pasting
   vim.opt.clipboard = 'unnamedplus'  -- Use the + register for the clipboard
 end
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99  -- 파일 열 때는 전부 펼친 상태
 
 -- large file loading performance
 -- local function disable_syntax_treesitter()
