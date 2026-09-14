@@ -86,10 +86,29 @@ mapKey('<leader>q', toggle_quickfix, 'n', { desc = "Toggle Quickfix Window" })
 -- 날짜 추가
 mapKey('<M-d>', '<C-r>=strftime("%Y-%m-%d")<CR>', 'i', { desc = "Insert today's date" })
 
--- 현재 버퍼의 파일 경로를 클립보드로 복사
-mapKey('<leader>cp', function()
+-- 현재 버퍼의 파일 경로를 클립보드로 복사 (visual mode에서는 #L{line} 범위 추가)
+local function copy_file_path(include_lines)
+  if include_lines then
+    -- Visual 모드를 먼저 빠져나와야 vim.notify 메시지가 "-- VISUAL --" 표시에 가려지지 않음
+    vim.cmd('normal! \27') -- Escape key
+  end
   local path = vim.fn.expand('%:p')
+  if include_lines then
+    local start_line = vim.fn.getpos("'<")[2]
+    local end_line = vim.fn.getpos("'>")[2]
+    if start_line > end_line then
+      start_line, end_line = end_line, start_line
+    end
+    if start_line == end_line then
+      path = path .. '#L' .. start_line
+    else
+      path = path .. '#L' .. start_line .. '-L' .. end_line
+    end
+  end
   vim.fn.setreg('+', path)
   vim.notify('Copied path: ' .. path)
-end, 'n', { desc = "Copy current buffer's file path" })
+end
+
+mapKey('<leader>cp', function() copy_file_path(false) end, 'n', { desc = "Copy current buffer's file path" })
+mapKey('<leader>cp', function() copy_file_path(true) end, 'v', { desc = "Copy current buffer's file path with line range" })
 
