@@ -109,6 +109,10 @@ local function copy_file_path(include_lines)
   vim.notify('Copied path: ' .. path)
 end
 
-mapKey('<leader>cp', function() copy_file_path(false) end, 'n', { desc = "Copy current buffer's file path" })
-mapKey('<leader>cp', function() copy_file_path(true) end, 'v', { desc = "Copy current buffer's file path with line range" })
-
+mapKey('<leader>cp', function() copy_file_path(false) end, 'n', { desc = "Copy current buffer's absolute file path" })
+mapKey('<leader>cp', function() copy_file_path(true) end, 'v', { desc = "Copy current buffer's absoluete file path with line range" })
+mapKey('<leader>cr', function()
+  local path = vim.fn.expand('%:.')
+  vim.fn.setreg('+', path)
+  vim.notify('Copied path: ' .. path)
+end, 'n', { desc = "Copy current buffer's relative file path" })
