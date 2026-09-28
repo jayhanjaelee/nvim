@@ -3,6 +3,7 @@ local ls = require('luasnip')
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local f = ls.function_node
 
 return {
 
@@ -52,6 +53,15 @@ return {
     t({"$description = get_string('setting_is_facetoface_help', $pluginname);", ''}),
     t({"$default = 1;", ''}),
     t({"$setting = new admin_setting_configcheckbox($name, $title, $description, $default);", ''}),
+  }),
+
+  s('mdl_admin_setting', {
+    t("$name = $pluginname . '/"), i(1, "sms_is_subject_required"), t({"';", ''}),
+    t("$title = get_string('setting_"), i(2, "sms_is_subject_required"), t({"', $pluginname);", ''}),
+    t("$description = get_string('setting_"), i(3), f(function(args) return args[1][1] end, {2}), t({"_desc', $pluginname);", ''}),
+    t("$default = "), i(4, "0"), t({";", ''}),
+    t("$setting = new admin_setting_config"), i(5, "checkbox"), t("($name, $title, $description, $default"), i(6), t({");", ''}),
+    t({"$temp->add($setting);", ''}),
   }),
       
   s('mdl_get_course_format', {
@@ -6952,15 +6962,23 @@ return {
     i(5, "Bluesoft"),
     t({"", " * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later", " */", "final class "}),
     i(6, "sample"),
-    t({"_test extends \\advanced_testcase {", "", "	/**", "	 * "}),
-    i(7, "1 + 1 = 2 인지 확인한다."),
+    t({"_test extends \\advanced_testcase {", "", "	protected function setUp(): void {", "		parent::setUp();", "		$this->resetAfterTest();", "", "		"}),
+    i(7, "// TODO: 테스트 픽스처 설정"),
+    t({"", "	}", "", "	/**", "	 * "}),
+    i(8, "1 + 1 = 2 인지 확인한다."),
     t({"", "	 *", "	 * @covers ::"}),
-    i(8, "nothing"),
+    i(9, "nothing"),
     t({"", "	 */", "	public function test_"}),
-    i(9, "one_plus_one"),
+    i(10, "one_plus_one"),
     t({"(): void {", "		"}),
-    i(10, "$this->assertSame(2, 1 + 1);"),
+    i(11, "$this->assertSame(2, 1 + 1);"),
     t({"", "	}", "}"}),
   }),
+
+  s('localhost',{
+    t({"if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {", "\t"}),
+    i(1, "// do something"),
+    t({""}, {"}"})
+  });
 
 }
